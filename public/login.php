@@ -21,12 +21,12 @@ include "templates/login-header.php";
                     <div class="login-form">
                         <form action="" method="post">
                             <div class="form-group">
-                                <label>Username</label>
-                                <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                <label>Nama Pengguna</label>
+                                <input class="au-input au-input--full" type="text" name="username" placeholder="Nama Pengguna">
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                <label>Kata Sandi</label>
+                                <input class="au-input au-input--full" type="password" name="password" placeholder="Kata Sandi">
                             </div>
                             <button type="submit" name="button-login" class="au-btn au-btn--block au-btn--green m-b-20">login</button>
                         </form>

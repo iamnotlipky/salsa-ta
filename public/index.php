@@ -8,6 +8,7 @@
         <a href="login.php" class="btn btn-success">Login</a>
     </div>
 </nav>
+
 <section class="pt-3 mb-4">
     <div class="container">
         <div class="text-center mb-3">
@@ -87,6 +88,7 @@
         </div>
     </div>
 </section>
+
 <section class="bg-light pt-5 pb-5">
     <div class="container">
         <div class="text-center mb-3">

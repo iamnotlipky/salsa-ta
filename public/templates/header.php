@@ -30,6 +30,10 @@
     <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
+    <!-- Datatables -->
+    <link href="assets/datatables/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/datatables/css/datatables.min.css" rel="stylesheet">
+
     <!-- Main CSS-->
     <link href="assets/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="assets/css/sweet-alert.css">
@@ -38,7 +42,6 @@
     <!-- Website Icon -->
     <link href="assets/img/icon/icon.png" rel="icon">
     <link href="assets/img/icon/icon.png" rel="apple-touch-icon">
-
 </head>
 
 <body class="animsition">

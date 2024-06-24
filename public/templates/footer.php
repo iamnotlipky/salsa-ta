@@ -5,8 +5,10 @@
 
 <!-- Jquery JS-->
 <script src="assets/vendor/jquery-3.2.1.min.js"></script>
-<script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Datatables JS -->
+<script src="assets/datatables/js/datatables.min.js"></script>
+<script src="assets/datatables/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap JS-->
 <script src="assets/vendor/bootstrap-4.1/popper.min.js"></script>
@@ -32,6 +34,8 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/sweetalert.min.js"></script>
 <script src="assets/js/bootstrap-datepicker.min.js"></script>
+
+<!-- SID JS -->
 <script>
     $(document).ready(function() {
         function preview(input) {
@@ -91,7 +95,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#myDataTables').DataTable();
     });
 </script>
 

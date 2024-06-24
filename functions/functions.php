@@ -32,7 +32,7 @@ class lsp
     public function logout()
     {
         session_destroy();
-        header("Location:index.php");
+        header("location:login.php");
     }
 
     public function selectSum($table, $namaField)
@@ -215,10 +215,10 @@ class lsp
         $sql   = "INSERT INTO $table VALUES($values)";
         $query = mysqli_query($con, $sql);
         if ($query) {
-            return ['response' => 'positive', 'alert' => 'Berhasil Menambahkan Data Barang!', 'redirect' => $redirect];
+            return ['response' => 'positive', 'alert' => 'Berhasil Menambahkan Data!', 'redirect' => $redirect];
         } else {
             echo mysqli_error($con);
-            return ['response' => 'negative', 'alert' => 'Gagal Menambahkan Data Barang!'];
+            return ['response' => 'negative', 'alert' => 'Gagal Menambahkan Data!'];
         }
     }
 
@@ -228,10 +228,10 @@ class lsp
         $sql   = "UPDATE $table SET $values WHERE $where = '$whereValues'";
         $query = mysqli_query($con, $sql);
         if ($query) {
-            return ['response' => 'positive', 'alert' => 'Berhasil Memperbarui Data Barang!', 'redirect' => $redirect];
+            return ['response' => 'positive', 'alert' => 'Berhasil!', 'redirect' => $redirect];
         } else {
             echo mysqli_error($con);
-            return ['response' => 'negative', 'alert' => 'Gagal Memperbarui Data Barang!'];
+            return ['response' => 'negative', 'alert' => 'Gagal!'];
         }
     }
 

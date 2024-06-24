@@ -5052,8 +5052,7 @@ section {
 
 /* ----- Statistic ----- */
 .statistic {
-  padding-top: 57px;
-  height: 100vh;
+  padding-top: 50px;
 }
 
 .statistic__item {

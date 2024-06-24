@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 -- (See below for the actual view)
 --
 CREATE TABLE `detailbarang` (
-`foto_merek` varchar(50)
+`foto_lokasi` varchar(50)
 ,`gambar` varchar(255)
 ,`harga_barang` int
 ,`kd_barang` varchar(7)
-,`kd_merek` varchar(7)
+,`kd_lokasi` varchar(7)
 ,`kd_supplier` varchar(7)
 ,`keterangan` varchar(200)
-,`merek` varchar(30)
+,`lokasi` varchar(30)
 ,`nama_barang` varchar(40)
 ,`nama_supplier` varchar(40)
 ,`no_telp` varchar(13)
@@ -71,7 +71,7 @@ CREATE TABLE `detailtransaksi` (
 CREATE TABLE `table_barang` (
   `kd_barang` varchar(7) NOT NULL,
   `nama_barang` varchar(40) NOT NULL,
-  `kd_merek` varchar(7) NOT NULL,
+  `kd_lokasi` varchar(7) NOT NULL,
   `kd_supplier` varchar(7) NOT NULL,
   `tanggal_masuk` date NOT NULL,
   `harga_barang` int NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `table_barang` (
 -- Dumping data for table `table_barang`
 --
 
-INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_merek`, `kd_supplier`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `gambar`, `keterangan`) VALUES
+INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_lokasi`, `kd_supplier`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `gambar`, `keterangan`) VALUES
 ('BR001', 'Semen Gresik', 'ME001', 'DS001', '2024-05-27', 80000, 0, '1716134815325.jpg', 'Semen Gresik'),
 ('BR002', 'semen Padang', 'ME002', 'DS002', '2024-05-27', 50000, 5, '1716205916316.jpg', 'ada'),
 ('BR003', 'semen', 'ME003', 'DS001', '2024-06-07', 1500000, 0, '1717732050810.jpeg', ''),
@@ -99,20 +99,20 @@ INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_merek`, `kd_supplier
 -- --------------------------------------------------------
 
 --
--- Table structure for table `table_merek`
+-- Table structure for table `table_lokasi`
 --
 
-CREATE TABLE `table_merek` (
-  `kd_merek` varchar(7) NOT NULL,
-  `merek` varchar(30) NOT NULL,
-  `foto_merek` varchar(50) NOT NULL
+CREATE TABLE `table_lokasi` (
+  `kd_lokasi` varchar(7) NOT NULL,
+  `lokasi` varchar(30) NOT NULL,
+  `foto_lokasi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `table_merek`
+-- Dumping data for table `table_lokasi`
 --
 
-INSERT INTO `table_merek` (`kd_merek`, `merek`, `foto_merek`) VALUES
+INSERT INTO `table_lokasi` (`kd_lokasi`, `lokasi`, `foto_lokasi`) VALUES
 ('ME001', 'Semen Gresik', '1716133565154.jpg'),
 ('ME002', 'Semen Padang', '1716778942588.jpg'),
 ('ME003', 'Semen Dynamix', '1716779010521.jpg'),
@@ -273,7 +273,7 @@ CREATE TABLE `transaksi_terbaru` (
 --
 DROP TABLE IF EXISTS `detailbarang`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarang`  AS SELECT `table_barang`.`kd_barang` AS `kd_barang`, `table_barang`.`nama_barang` AS `nama_barang`, `table_barang`.`kd_merek` AS `kd_merek`, `table_barang`.`kd_supplier` AS `kd_supplier`, `table_barang`.`tanggal_masuk` AS `tanggal_masuk`, `table_barang`.`harga_barang` AS `harga_barang`, `table_barang`.`stok_barang` AS `stok_barang`, `table_barang`.`gambar` AS `gambar`, `table_barang`.`keterangan` AS `keterangan`, `table_merek`.`merek` AS `merek`, `table_merek`.`foto_merek` AS `foto_merek`, `table_supplier`.`nama_supplier` AS `nama_supplier`, `table_supplier`.`no_telp` AS `no_telp` FROM ((`table_barang` join `table_merek` on((`table_barang`.`kd_merek` = `table_merek`.`kd_merek`))) join `table_supplier` on((`table_barang`.`kd_supplier` = `table_supplier`.`kd_supplier`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarang`  AS SELECT `table_barang`.`kd_barang` AS `kd_barang`, `table_barang`.`nama_barang` AS `nama_barang`, `table_barang`.`kd_lokasi` AS `kd_lokasi`, `table_barang`.`kd_supplier` AS `kd_supplier`, `table_barang`.`tanggal_masuk` AS `tanggal_masuk`, `table_barang`.`harga_barang` AS `harga_barang`, `table_barang`.`stok_barang` AS `stok_barang`, `table_barang`.`gambar` AS `gambar`, `table_barang`.`keterangan` AS `keterangan`, `table_lokasi`.`lokasi` AS `lokasi`, `table_lokasi`.`foto_lokasi` AS `foto_lokasi`, `table_supplier`.`nama_supplier` AS `nama_supplier`, `table_supplier`.`no_telp` AS `no_telp` FROM ((`table_barang` join `table_lokasi` on((`table_barang`.`kd_lokasi` = `table_lokasi`.`kd_lokasi`))) join `table_supplier` on((`table_barang`.`kd_supplier` = `table_supplier`.`kd_supplier`))) ;
 
 -- --------------------------------------------------------
 
@@ -312,13 +312,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 ALTER TABLE `table_barang`
   ADD PRIMARY KEY (`kd_barang`),
   ADD KEY `kd_distributor` (`kd_supplier`),
-  ADD KEY `kd_merek` (`kd_merek`);
+  ADD KEY `kd_lokasi` (`kd_lokasi`);
 
 --
--- Indexes for table `table_merek`
+-- Indexes for table `table_lokasi`
 --
-ALTER TABLE `table_merek`
-  ADD PRIMARY KEY (`kd_merek`);
+ALTER TABLE `table_lokasi`
+  ADD PRIMARY KEY (`kd_lokasi`);
 
 --
 -- Indexes for table `table_pretransaksi`

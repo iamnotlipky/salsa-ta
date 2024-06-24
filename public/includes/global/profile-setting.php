@@ -2,7 +2,7 @@
 $my   = new lsp();
 $auth = $my->selectWhere("table_user", "username", $_SESSION['username']);
 
-if (isset($_POST['btnUpdate'])) {
+if (isset($_POST['btn-update'])) {
 	$nama = $my->validateHtml($_POST['nama']);
 
 	if ($_FILES['foto']['name'] == "") {
@@ -53,12 +53,12 @@ if (isset($_POST['ubahPassword'])) {
 						<div class="au-breadcrumb-left">
 							<ul class="list-unstyled list-inline au-breadcrumb__list">
 								<li class="list-inline-item active">
-									<a href="#">Home</a>
+									<a href="#"><?= $auth['level']; ?></a>
 								</li>
 								<li class="list-inline-item seprate">
 									<span>/</span>
 								</li>
-								<li class="list-inline-item">Profil Saya</li>
+								<li class="list-inline-item">Pengaturan Profil</li>
 							</ul>
 						</div>
 					</div>
@@ -67,7 +67,8 @@ if (isset($_POST['ubahPassword'])) {
 		</div>
 	</div>
 </section>
-<div class="main-content" style="margin-top: -70px;">
+
+<section class="statistic">
 	<div class="section__content section__content--p30">
 		<div class="container-fluid">
 			<div class="row">
@@ -75,7 +76,7 @@ if (isset($_POST['ubahPassword'])) {
 					<form method="post" enctype="multipart/form-data">
 						<div class="card">
 							<div class="card-header">
-								<h3>Profil Saya</h3>
+								<h3>Pengaturan Profil</h3>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
@@ -83,7 +84,7 @@ if (isset($_POST['ubahPassword'])) {
 									<input type="text" class="form-control form-control-sm" style="font-weight: bold; color: red;" value="<?php echo $auth['kd_user'] ?>" readonly>
 								</div>
 								<div class="form-group">
-									<label for="">Nama Pengguna</label>
+									<label for="">Username</label>
 									<input type="text" class="form-control form-control-sm" value="<?php echo $auth['username'] ?>" readonly>
 								</div>
 								<div class="form-group">
@@ -98,7 +99,7 @@ if (isset($_POST['ubahPassword'])) {
 									<input type="file" name="foto" id="gambar" class="form-control-file">
 								</div>
 								<hr>
-								<button name="btnUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Simpan</button>
+								<button name="btn-update" class="btn btn-primary"><i class="fa fa-check"></i> Simpan </button>
 							</div>
 						</div>
 					</form>
@@ -107,7 +108,7 @@ if (isset($_POST['ubahPassword'])) {
 					<form method="post">
 						<div class="card">
 							<div class="card-header">
-								<h3>Kata Sandi</h3>
+								<h3>Ubah Kata Sandi</h3>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
@@ -131,4 +132,4 @@ if (isset($_POST['ubahPassword'])) {
 			</div>
 		</div>
 	</div>
-</div>
+</section>
