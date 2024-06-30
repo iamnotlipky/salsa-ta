@@ -142,59 +142,57 @@ if (isset($_POST['getUpdate'])) {
                             <strong class="card-title mb-3">Data Supplier</strong>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="myDataTables" class="table table-borderless table-striped">
-                                    <thead>
+                            <table id="myDataTables" class="table table-responsive table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <td>Kode Supplier</td>
+                                        <td>Nama Supplier</td>
+                                        <td>No Telp</td>
+                                        <td>Alamat</td>
+                                        <td>Aksi</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($dataDis as $ds) {
+                                    ?>
                                         <tr>
-                                            <th>Kode supplier</th>
-                                            <th>Nama Supplier</th>
-                                            <th>No Telp</th>
-                                            <th>Alamat</th>
-                                            <th>Aksi</th>
+                                            <td><?= $ds['kd_supplier'] ?></td>
+                                            <td><?= $ds['nama_supplier'] ?></td>
+                                            <td><?= $ds['no_telp'] ?></td>
+                                            <td><?= $ds['alamat'] ?></td>
+                                            <td class="text-center">
+                                                <div class="btn-group">
+                                                    <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=data-supplier&edit&id=<?= $ds['kd_supplier'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                    <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($dataDis as $ds) {
-                                        ?>
-                                            <tr>
-                                                <td><?= $ds['kd_supplier'] ?></td>
-                                                <td><?= $ds['nama_supplier'] ?></td>
-                                                <td><?= $ds['no_telp'] ?></td>
-                                                <td><?= $ds['alamat'] ?></td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                        <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=data-supplier&edit&id=<?= $ds['kd_supplier'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                                        <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <script src="assets/vendor/jquery-3.2.1.min.js"></script>
-                                            <script>
-                                                $('#btnDelete<?php echo $no; ?>').click(function(e) {
-                                                    e.preventDefault();
-                                                    swal({
-                                                        title: "Hapus",
-                                                        text: "Hapus Data Supplier?",
-                                                        type: "error",
-                                                        showCancelButton: true,
-                                                        confirmButtonText: "Konfirmasi",
-                                                        cancelButtonText: "Batal",
-                                                        closeOnConfirm: false,
-                                                        closeOnCancel: true
-                                                    }, function(isConfirm) {
-                                                        if (isConfirm) {
-                                                            window.location.href = "?page=data-supplier&delete&id=<?php echo $ds['kd_supplier'] ?>";
-                                                        }
-                                                    });
+                                        <script src="assets/vendor/jquery-3.2.1.min.js"></script>
+                                        <script>
+                                            $('#btnDelete<?php echo $no; ?>').click(function(e) {
+                                                e.preventDefault();
+                                                swal({
+                                                    title: "Hapus",
+                                                    text: "Hapus Data Supplier?",
+                                                    type: "error",
+                                                    showCancelButton: true,
+                                                    confirmButtonText: "Konfirmasi",
+                                                    cancelButtonText: "Batal",
+                                                    closeOnConfirm: false,
+                                                    closeOnCancel: true
+                                                }, function(isConfirm) {
+                                                    if (isConfirm) {
+                                                        window.location.href = "?page=data-supplier&delete&id=<?php echo $ds['kd_supplier'] ?>";
+                                                    }
                                                 });
-                                            </script>
-                                        <?php $no++;
-                                        } ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                            });
+                                        </script>
+                                    <?php $no++;
+                                    } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@ class lsp
     public function logout()
     {
         session_destroy();
-        header("location:login.php");
+        header("Location: login.php");
     }
 
     public function selectSum($table, $namaField)

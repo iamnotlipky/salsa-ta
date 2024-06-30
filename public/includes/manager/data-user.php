@@ -94,9 +94,9 @@ if (isset($_GET['delete'])) {
                                 <div class="form-group">
                                     <label for="level" class="control-label mb-1">Level</label>
                                     <select name="level" class="form-control mb-1">
-                                        <option value="">Level</option>
+                                        <option value="">Pilih Level</option>
                                         <option value="Admin">Admin</option>
-                                        <option value="Checker">Manager</option>
+                                        <option value="Manager">Manager</option>
                                         <option value="Checker">Checker</option>
                                     </select>
                                 </div>
@@ -112,60 +112,58 @@ if (isset($_GET['delete'])) {
                             <strong class="card-title mb-3">Data User</strong>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="myDataTables" class="table table-borderless table-striped">
-                                    <thead>
+                            <table id="myDataTables" class="table table-responsive table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Level</th>
+                                        <th>Foto</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($data as $dataB) {
+                                    ?>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Level</th>
-                                            <th>Foto</th>
-                                            <th>Aksi</th>
+                                            <td><?= $no; ?></td>
+                                            <td><?= $dataB['nama_user'] ?></td>
+                                            <td><?= $dataB['level'] ?></td>
+                                            <td><img width="60" src="img/<?= $dataB['foto_user'] ?>" alt="User"></td>
+                                            <td>
+                                                <div class="table-data-feature">
+                                                    <button id="btnDelete<?php echo $no; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($data as $dataB) {
-                                        ?>
-                                            <tr>
-                                                <td><?= $no; ?></td>
-                                                <td><?= $dataB['nama_user'] ?></td>
-                                                <td><?= $dataB['level'] ?></td>
-                                                <td><img width="60" src="img/<?= $dataB['foto_user'] ?>" alt="User"></td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button id="btnDelete<?php echo $no; ?>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <script src="assets/vendor/jquery-3.2.1.min.js"></script>
-                                            <script>
-                                                $('#btnDelete<?php echo $no; ?>').click(function(e) {
-                                                    e.preventDefault();
-                                                    swal({
-                                                        title: "Hapus",
-                                                        text: "Yakin Untuk menghapus?",
-                                                        type: "error",
-                                                        showCancelButton: true,
-                                                        confirmButtonText: "Konfirmasi",
-                                                        cancelButtonText: "Batal",
-                                                        closeOnConfirm: false,
-                                                        closeOnCancel: true
-                                                    }, function(isConfirm) {
-                                                        if (isConfirm) {
-                                                            window.location.href = "?page=data-user&delete&id=<?php echo $dataB['kd_user'] ?>";
-                                                        }
-                                                    });
+                                        <script src="assets/vendor/jquery-3.2.1.min.js"></script>
+                                        <script>
+                                            $('#btnDelete<?php echo $no; ?>').click(function(e) {
+                                                e.preventDefault();
+                                                swal({
+                                                    title: "Hapus",
+                                                    text: "Yakin Untuk menghapus?",
+                                                    type: "error",
+                                                    showCancelButton: true,
+                                                    confirmButtonText: "Konfirmasi",
+                                                    cancelButtonText: "Batal",
+                                                    closeOnConfirm: false,
+                                                    closeOnCancel: true
+                                                }, function(isConfirm) {
+                                                    if (isConfirm) {
+                                                        window.location.href = "?page=data-user&delete&id=<?php echo $dataB['kd_user'] ?>";
+                                                    }
                                                 });
-                                            </script>
-                                        <?php $no++;
-                                        } ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                            });
+                                        </script>
+                                    <?php $no++;
+                                    } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

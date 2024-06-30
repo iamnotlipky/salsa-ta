@@ -31,7 +31,6 @@
     <link href="assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Datatables -->
-    <link href="assets/datatables/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/datatables/css/datatables.min.css" rel="stylesheet">
 
     <!-- Main CSS-->
@@ -42,6 +41,7 @@
     <!-- Website Icon -->
     <link href="assets/img/icon/icon.png" rel="icon">
     <link href="assets/img/icon/icon.png" rel="apple-touch-icon">
+
 </head>
 
 <body class="animsition">

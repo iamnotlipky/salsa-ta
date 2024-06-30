@@ -42,15 +42,6 @@ if ($_SESSION['level'] != "Admin") {
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="statistic__item">
-                        <h2 class="number"><?= $user['count']; ?></h2>
-                        <span class="desc">User</span>
-                        <div class="icon">
-                            <i class="zmdi zmdi-accounts-alt"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="statistic__item">
                         <h2 class="number"><?= $supplier; ?></h2>
                         <span class="desc">Supplier</span>
                         <div class="icon">
@@ -61,9 +52,9 @@ if ($_SESSION['level'] != "Admin") {
                 <div class="col-md-6 col-lg-3">
                     <div class="statistic__item">
                         <h2 class="number"><?= $barang['count'] ?></h2>
-                        <span class="desc">Barang Tersedia</span>
+                        <span class="desc">Barang Masuk</span>
                         <div class="icon">
-                            <i class="zmdi zmdi-chart"></i>
+                            <i class="zmdi zmdi-arrow-left"></i>
                         </div>
                     </div>
                 </div>

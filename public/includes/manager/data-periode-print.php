@@ -6,16 +6,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/css/mains.css">
 </head>
+
 <style>
-    body {
-        overflow-x: hidden;
+    @media print {
+        .btn {
+            display: none;
+        }
+
+        .hd {
+            display: none;
+        }
     }
 </style>
 
-<body onload="window.print();">
+<body>
     <?php
     require_once "../../../config/config.php";
     require_once "../../../functions/functions.php";
@@ -42,49 +48,52 @@
                     <img src="../../assets/img/icon/logo.png" alt="logo" class="w-50 text-right">
                 </div>
             </div>
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Kode barang</th>
-                        <th>Nama barang</th>
-                        <th>Lokasi</th>
-                        <th>Supplier</th>
-                        <th>Tanggal Masuk</th>
-                        <th>Harga</th>
-                        <th>Stok</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if (count(@$dataB) > 0) {
-                        $no = 1;
-                        foreach (@$dataB['data'] as $ds) { ?>
+            <button class="btn btn-primary mb-3" onclick="window.print()">Cetak</button>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Kode barang</th>
+                            <th>Nama barang</th>
+                            <th>Layout</th>
+                            <th>Supplier</th>
+                            <th>Tanggal Masuk</th>
+                            <th>Harga</th>
+                            <th>Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (count(@$dataB) > 0) {
+                            $no = 1;
+                            foreach (@$dataB['data'] as $ds) { ?>
+                                <tr>
+                                    <td><?= $ds['kd_barang'] ?></td>
+                                    <td><?= $ds['nama_barang'] ?></td>
+                                    <td><?= $ds['layout'] ?></td>
+                                    <td><?= $ds['nama_supplier'] ?></td>
+                                    <td><?= $ds['tanggal_masuk'] ?></td>
+                                    <td><?= number_format($ds['harga_barang']) ?></td>
+                                    <td><?= $ds['stok_barang'] ?></td>
+                                </tr>
+                            <?php $no++;
+                            } ?>
                             <tr>
-                                <td><?= $ds['kd_barang'] ?></td>
-                                <td><?= $ds['nama_barang'] ?></td>
-                                <td><?= $ds['lokasi'] ?></td>
-                                <td><?= $ds['nama_supplier'] ?></td>
-                                <td><?= $ds['tanggal_masuk'] ?></td>
-                                <td><?= number_format($ds['harga_barang']) ?></td>
-                                <td><?= $ds['stok_barang'] ?></td>
+                                <td colspan="5"></td>
+                                <td>Jumlah</td>
+                                <td>
+                                    <?php foreach ($dataB['jumlah'] as $datas) : ?>
+                                        <?php echo $datas; ?>
+                                    <?php endforeach ?>
                             </tr>
-                        <?php $no++;
-                        } ?>
-                        <tr>
-                            <td colspan="5"></td>
-                            <td>Jumlah</td>
-                            <td>
-                                <?php foreach ($dataB['jumlah'] as $datas) : ?>
-                                    <?php echo $datas; ?>
-                                <?php endforeach ?>
-                        </tr>
-                    <?php } else { ?>
-                        <tr>
-                            <td colspan="7" class="text-center">Tidak Ada Barang pada Periode Ini</td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                        <?php } else { ?>
+                            <tr>
+                                <td colspan="7" class="text-center">Tidak Ada Barang pada Periode Ini</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
             <p>Tanggal cetak : <?= date("Y-m-d"); ?></p>
         </div>
     </div>

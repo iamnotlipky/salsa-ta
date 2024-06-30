@@ -5,14 +5,14 @@ if ($_SESSION['level'] != "Checker" && $_SESSION['level'] != "Admin") {
     header("location:index.php");
 }
 
-$table = "table_barang";
+$table = "table_barang_rijek";
 $getLayout = $br->select("table_layout");
 $getSatuan = $br->select("table_satuan");
 $getSupplier = $br->select("table_supplier");
-$autokode = $br->autokode("table_barang", "kd_barang", "BM");
+$autokode = $br->autokode("table_barang_rijek", "kd_barang", "BR");
 $waktu    = date("Y-m-d");
 
-if (isset($_POST['add-barang'])) {
+if (isset($_POST['add-barang-rijek'])) {
     $kode_barang    = $br->validateHtml($_POST['kode_barang']);
     $nama_barang    = $br->validateHtml($_POST['nama_barang']);
     $layout         = $br->validateHtml($_POST['layout']);
@@ -22,7 +22,7 @@ if (isset($_POST['add-barang'])) {
     $stok           = $br->validateHtml($_POST['stok']);
     $foto           = $_FILES['foto'];
     $ket            = $_POST['ket'];
-    $status         = $_POST['status'];
+    $status            = $_POST['status'];
 
     if ($kode_barang == " " || $nama_barang == " " || $layout == " " || $supplier == " " || $satuan == " " || $harga == " " || $stok == " " || $foto == " " || $ket == " " || $status == " ") {
         $response = ['response' => 'negative', 'alert' => 'Lengkapi Formulir Input Data Barang!'];
@@ -33,7 +33,7 @@ if (isset($_POST['add-barang'])) {
             $response = $br->validateImage();
             if ($response['types'] == "true") {
                 $value = "'$kode_barang','$nama_barang','$layout','$supplier','$satuan','$waktu','$harga','$stok','$response[image]','$ket','$status'";
-                $response = $br->insert($table, $value, "?page=data-barang-masuk");
+                $response = $br->insert($table, $value, "?page=data-barang-rijek");
             }
         }
     }
@@ -53,7 +53,7 @@ if (isset($_POST['add-barang'])) {
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Input Barang Masuk</li>
+                                <li class="list-inline-item">Input Barang Rijek</li>
                             </ul>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ if (isset($_POST['add-barang'])) {
                             <div class="au-card-title">
                                 <div class="bg-overlay bg-primary"></div>
                                 <h3>
-                                    <i class="zmdi zmdi-account-calendar"></i>Input Barang Masuk
+                                    <i class="zmdi zmdi-account-calendar"></i>Input Barang Rijek
                                 </h3>
                             </div>
                             <div class="row">
@@ -108,13 +108,13 @@ if (isset($_POST['add-barang'])) {
                                         <div class="form-group">
                                             <label for="">Satuan</label>
                                             <select name="satuan" class="form-control">
-                                                <option value=" ">Pilih Satuan</option>
                                                 <?php foreach ($getSatuan as $st) { ?>
                                                     <option value="<?= $st['kd_satuan'] ?>"><?= $st['satuan'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="card-body">
@@ -141,7 +141,7 @@ if (isset($_POST['add-barang'])) {
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button name="add-barang" class="btn btn-primary"><i class="fa fa-download"></i> Simpan</button>
+                                <button name="add-barang-rijek" class="btn btn-primary"><i class="fa fa-download"></i> Simpan</button>
                                 <button type="reset" class="btn btn-danger"><i class="fa fa-eraser"></i> Hapus</button>
                             </div>
                         </div>

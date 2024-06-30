@@ -164,10 +164,10 @@ if (isset($_GET['delete'])) {
                             ?>
                             <table class="table table-striped table-bordered table-responsive">
                                 <tr>
-                                    <th>Kode Antrian</th>
-                                    <th>Nama Barang</th>
-                                    <th>Quantity</th>
-                                    <th>Sub Total</th>
+                                    <td>Kode Antrian</td>
+                                    <td>Nama Barang</td>
+                                    <td>Quantity</td>
+                                    <td>Sub Total</td>
                                     <td>Batal beli</td>
                                 </tr>
                                 <?php
@@ -242,14 +242,20 @@ if (isset($_GET['delete'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($barangs as $brs) { ?>
-                            <tr>
-                                <td><a href="checker-panel.php?page=input-barang-keluar&get-barang&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
-                                <td><?php echo $brs['nama_barang'] ?></td>
-                                <td><?php echo $brs['harga_barang'] ?></td>
-                                <td><?php echo $brs['stok_barang'] ?></td>
+                        <?php if (!empty($barangs)) : ?>
+                            <?php foreach ($barangs as $brs) { ?>
+                                <tr>
+                                    <td><a href="admin-panel.php?page=input-barang-keluar&get-barang&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
+                                    <td><?php echo $brs['nama_barang'] ?></td>
+                                    <td><?php echo $brs['harga_barang'] ?></td>
+                                    <td><?php echo $brs['stok_barang'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        <?php else : ?>
+                            <tr class="text-center">
+                                <td colspan="4">Tidak Ada Barang Tersedia</td>
                             </tr>
-                        <?php } ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

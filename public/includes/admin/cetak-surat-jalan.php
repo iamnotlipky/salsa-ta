@@ -14,17 +14,23 @@ $exec2     = mysqli_query($con, $sql2);
 $assoc2    = mysqli_fetch_assoc($exec2);
 
 if ($assoc2['count'] <= 0) {
-	header("location:checker-panel.php?page=input-barang-keluar");
+	header("location:admin-panel.php?page=input-barang-keluar");
 }
 
 if (isset($_POST['selesaiGet'])) {
-	$total  = $_POST['tot'];
+	$total				= $_POST['tot'];
+	$date  				= date("Y-m-d");
+	$nama_cust  		= $pem->validateHtml($_POST['nama_cust']);
+	$kontak_cust  		= $pem->validateHtml($_POST['kontak_cust']);
+	$alamat_cust  		= $pem->validateHtml($_POST['alamat_cust']);
+	$nomor_armada  		= $pem->validateHtml($_POST['nomor_armada']);
+	$supir_armada  		= $pem->validateHtml($_POST['supir_armada']);
+	$status  		= $pem->validateHtml($_POST['status']);
 	// $bayar  = $_POST['bayar'];
 	// $kem    = $_POST['kem'];
 
-	$date  = date("Y-m-d");
-	$value = "'$transkode','$auth[kd_user]','$assoc1[jum]','$assoc[sub]','$date'";
-	$response = $pem->insert("table_transaksi", $value, "?page=nota&id=$transkode");
+	$value = "'$transkode','$auth[kd_user]','$assoc1[jum]','$assoc[sub]','$date','$nama_cust','$kontak_cust','$alamat_cust','$nomor_armada','$supir_armada','$status'";
+	$response = $pem->insert("table_transaksi", $value, "?page=surat-jalan&id=$transkode");
 	if ($response['response'] == "positive") {
 		unset($_SESSION['transaksi']);
 	}
@@ -44,7 +50,7 @@ if (isset($_POST['selesaiGet'])) {
 								<li class="list-inline-item seprate">
 									<span>/</span>
 								</li>
-								<li class="list-inline-item">Cetak Surat Jalan</li>
+								<li class="list-inline-item">Cetak Surat Perintah Jalan</li>
 							</ul>
 						</div>
 					</div>
@@ -61,7 +67,7 @@ if (isset($_POST['selesaiGet'])) {
 				<div class="col-md-6 col-sm-12">
 					<div class="card">
 						<div class="card-header">
-							<h3>Cetak Surat Jalan</h3>
+							<h3>Cetak Surat Perintah Jalan</h3>
 						</div>
 						<div class="card-body">
 							<form method="post">
@@ -74,6 +80,29 @@ if (isset($_POST['selesaiGet'])) {
 										<label for="">Total harga</label>
 										<input type="text" class="form-control" name="tot" id="tot" value="<?php echo $assoc['sub'] ?>" readonly>
 									</div>
+									<div class="form-group">
+										<label for="">Nama Customer</label>
+										<input type="text" class="form-control" name="nama_cust" required>
+									</div>
+									<div class="form-group">
+										<label for="">Kontak Customer</label>
+										<input type="text" class="form-control" name="kontak_cust" required>
+									</div>
+									<div class="form-group">
+										<label for="">Alamat Customer</label>
+										<input type="text" class="form-control" name="alamat_cust" required>
+									</div>
+									<div class="form-group">
+										<label for="">Plat Nomor Armada</label>
+										<input type="text" class="form-control" name="nomor_armada" required>
+									</div>
+									<div class="form-group">
+										<label for="">Nama Supir Armada</label>
+										<input type="text" class="form-control" name="supir_armada" required>
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="status" value="Unapproved" hidden readonly>
+									</div>
 									<!-- <div class="form-group">
 										<label for="">Bayar</label>
 										<input type="text" class="form-control" name="bayar" id="bayar">
@@ -82,8 +111,8 @@ if (isset($_POST['selesaiGet'])) {
 										<label for="">Kembalian</label>
 										<input type="text" class="form-control" name="kem" id="kem" readonly="">
 									</div> -->
-									<button class="btn btn-primary" name="selesaiGet"><i class="fa fa-cart-plus"></i> Selesaikan Transaksi </button>
-									<a href="?page=kasirTransaksi" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
+									<button class="btn btn-primary" name="selesaiGet"><i class="fa fa-cart-plus"></i> Lanjutkan</button>
+									<a href="?page=input-barang-keluar" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 								</div>
 							</form>
 						</div>

@@ -19,13 +19,13 @@ include "templates/header.php";
         @$page = $_GET['page'];
         switch ($page) {
             case 'data-barang-masuk':
-                include "includes/manager/view-manager-barang.php";
+                include "includes/manager/laporan-semua-barang.php";
                 break;
             case 'data-barang-keluar':
                 include "includes/global/data-barang-keluar.php";
                 break;
-            case 'all-data-barang':
-                include "includes/manager/all-data-barang.php";
+            case 'laporan-semua-barang':
+                include "includes/manager/laporan-semua-barang.php";
                 break;
             case 'view-barang-detail':
                 include "includes/global/view-barang-detail.php";
@@ -35,6 +35,15 @@ include "templates/header.php";
                 break;
             case 'data-barang-habis':
                 include "includes/manager/data-barang-habis.php";
+                break;
+            case 'data-user':
+                include "includes/manager/data-user.php";
+                break;
+            case 'cetak-surat-jalan':
+                include "includes/admin/cetak-surat-jalan.php";
+                break;
+            case 'surat-jalan':
+                include "includes/admin/surat-jalan.php";
                 break;
             case 'profile-setting':
                 include "includes/global/profile-setting.php";

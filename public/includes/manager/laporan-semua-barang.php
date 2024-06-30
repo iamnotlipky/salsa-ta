@@ -38,7 +38,7 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
                 <li class="list-inline-item seprate">
                   <span>/</span>
                 </li>
-                <li class="list-inline-item">Laporan Semua Barang</li>
+                <li class="list-inline-item">Laporan Barang Masuk</li>
               </ul>
             </div>
           </div>
@@ -52,10 +52,10 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
   <div class="section__content section__content--p30">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-12 rounded">
+        <div class="col-sm-12 rounded mb-5">
           <div class="row">
             <div class="col-6">
-              <h4>Laporan Semua Barang</h4>
+              <h4>Laporan Barang Masuk</h4>
               <p>PT Semen Indonesia Distributor</p>
             </div>
             <div class="col-6 text-right">
@@ -70,14 +70,14 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
             <table class="table table-striped table-bordered" border="1" cellspacing="0" width="100%;" cellpadding="20">
               <thead>
                 <tr>
-                  <th>Kode barang</th>
-                  <th>Nama barang</th>
-                  <th>Lokasi</th>
-                  <th>Satuan</th>
-                  <th>Supplier</th>
-                  <th>Tanggal Masuk</th>
-                  <th>Harga</th>
-                  <th>Stok</th>
+                  <td>Kode barang</td>
+                  <td>Nama barang</td>
+                  <td>Lokasi</td>
+                  <td>Supplier</td>
+                  <td>Tanggal Masuk</td>
+                  <td>Harga</td>
+                  <td>Stok</td>
+                  <td>Satuan</td>
                 </tr>
               </thead>
               <tbody>
@@ -87,21 +87,22 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
                   <tr>
                     <td><?= $ds['kd_barang'] ?></td>
                     <td><?= $ds['nama_barang'] ?></td>
-                    <td><?= $ds['lokasi'] ?></td>
-                    <td><?= $ds['satuan'] ?></td>
+                    <td><?= $ds['layout'] ?></td>
                     <td><?= $ds['nama_supplier'] ?></td>
                     <td><?= $ds['tanggal_masuk'] ?></td>
                     <td><?= number_format($ds['harga_barang']) ?></td>
                     <td><?= $ds['stok_barang'] ?></td>
-                  <?php $no++;
+                    <td><?= $ds['satuan'] ?></td>
+                  </tr>
+                <?php $no++;
                 } ?>
               </tbody>
               <tr>
-                <td colspan="6">Total barang yang di miliki</td>
+                <td colspan="7">Total barang yang di miliki</td>
                 <td><?php echo $totbal['sum']; ?></td>
               </tr>
               <tr>
-                <td colspan="6">Jumlah Model Barang</td>
+                <td colspan="7">Jumlah Model Barang</td>
                 <td><?php echo $total['count']; ?></td>
               </tr>
             </table>

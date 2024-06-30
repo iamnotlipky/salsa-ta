@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="footer-sid">
+<footer class="footer-sid print-sid">
     <p>&copy; Modern Warehouse Design By Aulia Salsabila</p>
 </footer>
 
@@ -8,7 +8,6 @@
 
 <!-- Datatables JS -->
 <script src="assets/datatables/js/datatables.min.js"></script>
-<script src="assets/datatables/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap JS-->
 <script src="assets/vendor/bootstrap-4.1/popper.min.js"></script>

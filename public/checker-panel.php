@@ -18,20 +18,23 @@ include "templates/header.php";
 
         @$page = $_GET['page'];
         switch ($page) {
+            case 'data-barang-masuk':
+                include "includes/global/data-barang-masuk.php";
+                break;
             case 'input-barang-masuk':
                 include "includes/global/input-barang-masuk.php";
                 break;
             case 'view-barang-detail':
                 include "includes/global/view-barang-detail.php";
                 break;
-            case 'input-barang-keluar':
-                include "includes/global/input-barang-keluar.php";
+            case 'data-barang-rijek':
+                include "includes/global/data-barang-rijek.php";
                 break;
-            case 'cetak-surat-jalan':
-                include "includes/global/cetak-surat-jalan.php";
+            case 'input-barang-rijek':
+                include "includes/global/input-barang-rijek.php";
                 break;
-            case 'nota':
-                include "includes/global/surat-jalan.php";
+            case 'view-detail-barang-rijek':
+                include "includes/global/view-detail-barang-rijek.php";
                 break;
             case 'profile-setting':
                 include "includes/global/profile-setting.php";

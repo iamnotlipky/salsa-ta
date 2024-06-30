@@ -67,7 +67,7 @@ if (isset($_POST['btnSearch'])) {
 										<tr>
 											<th>Kode barang</th>
 											<th>Nama barang</th>
-											<th>Lokasi</th>
+											<th>Layout</th>
 											<th>Satuan</th>
 											<th>Supplier</th>
 											<th>Tanggal Masuk</th>
@@ -82,7 +82,7 @@ if (isset($_POST['btnSearch'])) {
 												<tr>
 													<td><?= $ds['kd_barang'] ?></td>
 													<td><?= $ds['nama_barang'] ?></td>
-													<td><?= $ds['lokasi'] ?></td>
+													<td><?= $ds['layout'] ?></td>
 													<td><?= $ds['satuan'] ?></td>
 													<td><?= $ds['nama_supplier'] ?></td>
 													<td><?= $ds['tanggal_masuk'] ?></td>

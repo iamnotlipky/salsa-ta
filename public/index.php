@@ -119,7 +119,7 @@
                 <div class="bg-white rounded shadow p-3">
                     <h5 class="mb-3">3. EKSPANSI USAHA</h5>
                     <p class="text-justify">
-                        Peningkatan skala usaha atau bisnis melalui perluasan perusahaan dengan cara membangun usaha di lokasi lain dengan tujuan meningkatkan penjualan dan profit serta memberikan peluang bisnis jangka panjang.
+                        Peningkatan skala usaha atau bisnis melalui perluasan perusahaan dengan cara membangun usaha di layout lain dengan tujuan meningkatkan penjualan dan profit serta memberikan peluang bisnis jangka panjang.
                     </p>
                 </div>
             </div>

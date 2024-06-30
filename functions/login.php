@@ -13,21 +13,3 @@ if ($login->sessionCheck() == "true") {
         header("location:checker-panel.php");
     }
 }
-
-if (isset($_POST['button-login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if ($response = $login->login($username, $password)) {
-        if ($response['response'] == "positive") {
-            $_SESSION['username'] = $_POST['username'];
-            $_SESSION['level'] = $response['level'];
-            if ($response['level'] == "Admin") {
-                $response = $login->redirect("admin-panel.php");
-            } else if ($response['level'] == "Manager") {
-                $response = $login->redirect("manager-panel.php");
-            } else if ($response['level'] == "Checker") {
-                $response = $login->redirect("checker-panel.php");
-            }
-        }
-    }
-}

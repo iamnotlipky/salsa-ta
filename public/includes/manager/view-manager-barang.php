@@ -40,7 +40,7 @@ if ($_SESSION['level'] != "Manager") {
 							<h3>Semua Barang</h3>
 							<br>
 							<!-- <a href="manager/export.php" name="export" class="btn btn-success" target="_blank">Export Excel</a> -->
-							<a href="?page=all-data-barang" target="_blank" class="btn btn-info">Print</a>
+							<a href="?page=laporan-semua-barang" target="_blank" class="btn btn-info">Cetak</a>
 						</div>
 						<div class="card-body">
 							<table class="table table-hover table-bordered" id="sampleTable">
@@ -48,34 +48,37 @@ if ($_SESSION['level'] != "Manager") {
 									<tr>
 										<th>Kode barang</th>
 										<th>Nama barang</th>
-										<th>Lokasi</th>
+										<th>Layout</th>
 										<th>Supplier</th>
 										<th>Tanggal Masuk</th>
 										<th>Harga</th>
 										<th>Stok</th>
 										<th>Satuan</th>
-										<th>Action</th>
+										<th>Opsi</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php
-									$no = 1;
-									foreach ($dataB as $ds) { ?>
+									<?php if (!empty($dataB)) : ?>
+										<?php foreach ($dataB as $ds) : ?>
+											<tr>
+												<td><?= $ds['kd_barang'] ?></td>
+												<td><?= $ds['nama_barang'] ?></td>
+												<td><?= $ds['layout'] ?></td>
+												<td><?= $ds['nama_supplier'] ?></td>
+												<td><?= $ds['tanggal_masuk'] ?></td>
+												<td><?= number_format($ds['harga_barang']) ?></td>
+												<td><?= $ds['stok_barang'] ?></td>
+												<td><?= $ds['satuan'] ?></td>
+												<td class="text-center">
+													<a href="?page=view-barang-detail&id=<?php echo $ds['kd_barang'] ?>" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+									<?php else : ?>
 										<tr>
-											<td><?= $ds['kd_barang'] ?></td>
-											<td><?= $ds['nama_barang'] ?></td>
-											<td><?= $ds['lokasi'] ?></td>
-											<td><?= $ds['nama_supplier'] ?></td>
-											<td><?= $ds['tanggal_masuk'] ?></td>
-											<td><?= number_format($ds['harga_barang']) ?></td>
-											<td><?= $ds['stok_barang'] ?></td>
-											<td><?= $ds['satuan'] ?></td>
-											<td class="text-center">
-												<a href="?page=view-barang-detail&id=<?php echo $ds['kd_barang'] ?>" class="btn btn-warning"><i class="fa fa-search"></i></a>
-											</td>
+											<td colspan="9" class="text-center">Tidak Ada Data</td>
 										</tr>
-									<?php $no++;
-									} ?>
+									<?php endif; ?>
 								</tbody>
 							</table>
 						</div>

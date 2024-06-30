@@ -1,15 +1,15 @@
 <?php
 
-$brgmasuk = new lsp();
+$brgrijek = new lsp();
 
-$detailbrg = $brgmasuk->select("detailbarang");
+$detailbrg = $brgrijek->select("detailbarangrijek");
 
 if ($_SESSION['level'] != "Manager" && $_SESSION['level'] != "Admin" && $_SESSION['level'] != "Checker") {
     header("Location: index.php");
 }
 
 if (isset($_GET['delete'])) {
-    $response = $brgmasuk->delete("table_barang", "kd_barang", $_GET['id'], "?page=data-barang-masuk");
+    $response = $brgrijek->delete("table_barang_rijek", "kd_barang", $_GET['id'], "?page=data-barang-rijek");
 }
 
 ?>
@@ -26,7 +26,7 @@ if (isset($_GET['delete'])) {
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Data Barang Masuk</li>
+                                <li class="list-inline-item">Data Barang Rijek</li>
                             </ul>
                         </div>
                     </div>
@@ -45,12 +45,12 @@ if (isset($_GET['delete'])) {
                         <div class="au-card-title">
                             <div class="bg-overlay bg-overlay--blue bg-primary"></div>
                             <h3>
-                                <i class="zmdi zmdi-account-calendar"></i>Data Barang Masuk
+                                <i class="zmdi zmdi-account-calendar"></i>Data Barang Rijek
                             </h3>
                         </div>
                         <?php if ($auth['level'] != "Manager") : ?>
                             <div class="m-3">
-                                <a href="?page=input-barang-masuk" class="btn btn-primary"><i class="fa fa-plus"></i> Input Barang Masuk</a>
+                                <a href="?page=input-barang-rijek" class="btn btn-primary"><i class="fa fa-plus"></i> Input Barang Rijek</a>
                             </div>
                         <?php endif; ?>
                         <div class="card-body">
@@ -93,12 +93,12 @@ if (isset($_GET['delete'])) {
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <?php if ($_SESSION['level'] != "Checker") : ?>
-                                                        <a href="?page=view-edit-barang&edit&id=<?= $db['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                        <a href="?page=view-edit-barang-rijek&edit&id=<?= $db['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                                         <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger">
                                                             <i class="fa fa-trash" id="button-delete<?php echo $no; ?>"></i>
                                                         </button>
                                                     <?php endif; ?>
-                                                    <a href="?page=view-barang-detail&id=<?php echo $db['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
+                                                    <a href="?page=view-detail-barang-rijek&id=<?php echo $db['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -117,7 +117,7 @@ if (isset($_GET['delete'])) {
                                                     closeOnCancel: true
                                                 }, function(isConfirm) {
                                                     if (isConfirm) {
-                                                        window.location.href = "?page=data-barang-masuk&delete&id=<?php echo $db['kd_barang'] ?>";
+                                                        window.location.href = "?page=data-barang-rijek&delete&id=<?php echo $db['kd_barang'] ?>";
                                                     }
                                                 });
                                             });

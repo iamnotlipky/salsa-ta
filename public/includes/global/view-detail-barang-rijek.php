@@ -1,7 +1,7 @@
 <?php
 
 $dt = new lsp();
-$detail = $dt->selectWhere("detailBarang", "kd_barang", $_GET['id']);
+$detail = $dt->selectWhere("detailbarangrijek", "kd_barang", $_GET['id']);
 if ($_SESSION['level'] != "Checker" && $_SESSION['level'] != "Admin" && $_SESSION['level'] != "Manager") {
 	header("location:index.php");
 }
@@ -20,7 +20,7 @@ if ($_SESSION['level'] != "Checker" && $_SESSION['level'] != "Admin" && $_SESSIO
 								<li class="list-inline-item seprate">
 									<span>/</span>
 								</li>
-								<li class="list-inline-item">Detail Barang</li>
+								<li class="list-inline-item">Detail Barang Rijek</li>
 							</ul>
 						</div>
 					</div>
@@ -43,12 +43,12 @@ if ($_SESSION['level'] != "Checker" && $_SESSION['level'] != "Admin" && $_SESSIO
 							<img style="min-height: 200px; width: 100%; display: block;" src="img/<?php echo $detail['gambar'] ?>" alt="User">
 						</div>
 					</div>
-					<a href="?page=data-barang-masuk" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
+					<a href="?page=data-barang-rijek" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 				</div>
 				<div class="col-md-8">
 					<div class="card">
 						<div class="card-header">
-							<h3>Detail Barang</h3>
+							<h3>Detail Barang Rijek</h3>
 						</div>
 						<div class="card-body">
 							<table class="table" cellpadding="10">

@@ -3,13 +3,13 @@ $br = new lsp();
 if ($_SESSION['level'] != "Admin") {
 	header("location:index.php");
 }
-$table    = "table_barang";
+$table    = "table_barang_rijek";
 $data     = $br->selectWhere($table, "kd_barang", $_GET['id']);
 $getLayout = $br->select("table_layout");
 $getSatuan = $br->select("table_satuan");
 $getDistr = $br->select("table_supplier");
 $waktu    = date("Y-m-d");
-if (isset($_POST['edit-barang'])) {
+if (isset($_POST['edit-barang-rijek'])) {
 	$kode_barang  = $br->validateHtml($_POST['kode_barang']);
 	$nama_barang  = $br->validateHtml($_POST['nama_barang']);
 	$layout_barang = $br->validateHtml($_POST['layout_barang']);
@@ -28,12 +28,12 @@ if (isset($_POST['edit-barang'])) {
 		} else {
 			if ($_FILES['foto']['name'] == "") {
 				$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_layout='$layout_barang',kd_satuan='$satuan',kd_supplier='$supplier',tanggal_masuk='$waktu',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',status='$status'";
-				$response = $br->update($table, $value, "kd_barang", $_GET['id'], "?page=data-barang-masuk");
+				$response = $br->update($table, $value, "kd_barang", $_GET['id'], "?page=data-barang-rijek");
 			} else {
 				$response = $br->validateImage();
 				if ($response['types'] == "true") {
 					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_layout='$layout_barang',kd_satuan='$satuan',kd_supplier='$supplier',tanggal_masuk='$waktu',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',status='$status',gambar='$response[image]'";
-					$response = $br->update($table, $value, "kd_barang", $_GET['id'], "?page=data-barang-masuk");
+					$response = $br->update($table, $value, "kd_barang", $_GET['id'], "?page=data-barang-rijek");
 				} else {
 					$response = ['response' => 'negative', 'alert' => 'gambar error'];
 				}
@@ -57,7 +57,7 @@ if (isset($_POST['edit-barang'])) {
 								<li class="list-inline-item seprate">
 									<span>/</span>
 								</li>
-								<li class="list-inline-item">Edit Data Barang </li>
+								<li class="list-inline-item">Edit Data Barang Rijek</li>
 							</ul>
 						</div>
 					</div>
@@ -77,7 +77,7 @@ if (isset($_POST['edit-barang'])) {
 							<div class="au-card-title">
 								<div class="bg-overlay bg-overlay--blue"></div>
 								<h3>
-									<i class="zmdi zmdi-account-calendar"></i>Edit Data Barang
+									<i class="zmdi zmdi-account-calendar"></i>Edit Data Barang Rijek
 								</h3>
 							</div>
 							<div class="card-body">
@@ -175,8 +175,8 @@ if (isset($_POST['edit-barang'])) {
 								</div>
 							</div>
 							<div class="card-footer">
-								<button name="edit-barang" class="btn btn-primary"><i class="fa fa-download"></i> Konfirmasi</button>
-								<a href="?page=data-barang-masuk" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
+								<button name="edit-barang-rijek" class="btn btn-primary"><i class="fa fa-download"></i> Konfirmasi</button>
+								<a href="?page=data-barang-rijek" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 							</div>
 						</div>
 					</form>

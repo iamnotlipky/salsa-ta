@@ -42,7 +42,7 @@
  				<tr>
  					<th>Kode barang</th>
  					<th>Nama barang</th>
- 					<th>Lokasi</th>
+ 					<th>Layout</th>
  					<th>Supplier</th>
  					<th>Tanggal Masuk</th>
  					<th>Harga</th>
@@ -56,7 +56,7 @@
  					<tr>
  						<td><?= $ds['kd_barang'] ?></td>
  						<td><?= $ds['nama_barang'] ?></td>
- 						<td><?= $ds['lokasi'] ?></td>
+ 						<td><?= $ds['layout'] ?></td>
  						<td><?= $ds['nama_supplier'] ?></td>
  						<td><?= $ds['tanggal_masuk'] ?></td>
  						<td><?= $ds['harga_barang'] ?></td>
