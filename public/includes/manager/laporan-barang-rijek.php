@@ -2,9 +2,9 @@
 require_once "../config/config.php";
 require_once "../functions/functions.php";
 $qb = new lsp();
-$dataB = $qb->select("detailbarang");
-$totbal = $qb->selectSum("detailbarang", "stok_barang");
-$total  = $qb->selectCount("detailbarang", "kd_barang");
+$dataB = $qb->select("detailbarangrijek");
+$totbal = $qb->selectSum("detailbarangrijek", "stok_barang");
+$total  = $qb->selectCount("detailbarangrijek", "kd_barang");
 ?>
 
 <style>
@@ -38,7 +38,7 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
                 <li class="list-inline-item seprate">
                   <span>/</span>
                 </li>
-                <li class="list-inline-item">Laporan Barang Masuk</li>
+                <li class="list-inline-item">Laporan Barang Rijek</li>
               </ul>
             </div>
           </div>
@@ -55,7 +55,7 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
         <div class="col-sm-12 rounded mb-5">
           <div class="row">
             <div class="col-6">
-              <h4>Laporan Barang Masuk</h4>
+              <h4>Laporan Barang Rijek</h4>
               <p>PT Semen Indonesia Distributor</p>
             </div>
             <div class="col-6 text-right">
@@ -65,6 +65,7 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
           <div class="my-3">
             <button class="btn btn-primary" onclick="window.print()">Cetak</button>
           </div>
+          <p class="text-right mb-3">Tanggal Cetak: <?php echo date("Y-m-d"); ?></p>
           <div class="table-responsive">
             <table class="table table-striped table-bordered" border="1" cellspacing="0" width="100%;" cellpadding="20">
               <thead>

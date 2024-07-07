@@ -1,5 +1,5 @@
 <?php
-$config['base_url'] = 'http://localhost/inventori/public/';
+$config['base_url'] = 'http://localhost/warehouse/public/';
 
 $username = "root";
 $password = "";

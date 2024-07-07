@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
       .col-sm-12 {
             background: white;
             padding: 20px;
+            padding-bottom: 200px;
       }
 
       @media print {
@@ -71,7 +72,7 @@ if (isset($_GET['id'])) {
       </div>
 </section>
 
-<section class="statistic pb-5">
+<section class="statistic" style="padding-bottom: 100px;">
       <div class="section__content section__content--p30">
             <div class="container-fluid">
                   <div class="row">
@@ -98,7 +99,8 @@ if (isset($_GET['id'])) {
                               <div class="row print">
                                     <div class="col-6">
                                           <h4>Data Barang Keluar</h4>
-                                          <p>PT Semen Indonesia Distributor</p>
+                                          <p class="mb-5">PT Semen Indonesia Distributor</p>
+                                          <a href="#" class="btn btn-dark" onclick="window.print();">Cetak</a>
                                     </div>
                                     <div class="col-6 text-right">
                                           <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
@@ -143,15 +145,20 @@ if (isset($_GET['id'])) {
                               </table>
                               <br>
                               <p>Tanggal Beli : <?php echo $dd['tanggal_beli']; ?></p>
+                              <div class="float-right text-center mt-3">
+                              <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                                    <div class="mt-3">
+                                          <p class="mb-5">Penanggung Jawab</p>
+                                          <p>( <?= $auth['nama_user'] ?> )</p>
+                              </div>
                               <br>
-                              <a href="#" class="btn btn-dark" onclick="window.print();">Cetak</a>
                         <?php endif ?>
                         <?php if (!isset($_GET['id'])) : ?>
                               <div class="row print">
                                     <div class="col-6">
                                           <h4>Data Barang Keluar</h4>
-                                          <span>PT Semen Indonesia Distributor</span>
-                                          <p class="pt-3"><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
+                                          <p class="mb-5">PT Semen Indonesia Distributor</p>
+                                          <a href="#" class="btn btn-dark" onclick="window.print();">Cetak</a>
                                     </div>
                                     <div class="col-6 text-right">
                                           <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
@@ -189,8 +196,13 @@ if (isset($_GET['id'])) {
                                           </tr>
                                     </tbody>
                               </table>
+                              <div class="float-right text-center mt-3">
+                              <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                                    <div class="mt-3">
+                                          <p class="mb-5">Penanggung Jawab</p>
+                                          <p>( <?= $auth['nama_user'] ?> )</p>
+                              </div>
                               <br>
-                              <a href="#" class="btn btn-dark" onclick="window.print();">Cetak</a>
                         <?php endif ?>
                   </div>
             </div>

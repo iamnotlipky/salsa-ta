@@ -37,7 +37,7 @@
                         <i class="fa logo-hex fa-stack-2x"></i>
                         <i class="fa logo-fa fa-warehouse fa-stack-1x"></i>
                     </div>
-                    <h3>BUDAYA PERUSAHAAN</h3>
+                    <h3>BUDAYA PERUSAHAAN</h3> 
                 </div>
                 <hr class="hr-green-sid">
                 <div class="text-center">

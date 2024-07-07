@@ -84,16 +84,20 @@
                 <li><a href="?page"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
                 <?php if ($_SESSION['level'] == "Admin") : ?>
                     <li><a href="?page=data-supplier"><i class="fas fa-list"></i>Kelola Data Supplier</a></li>
-                    <li><a href="?page=data-layout"><i class="fas fa-barcode"></i>Kelola Data Layout</a></li>
+                    <li><a href="?page=data-layout"><i class="fas fa-sliders"></i>Kelola Data Layout</a></li>
                     <li><a href="?page=data-satuan"><i class="fas fa-barcode"></i>Kelola Data Satuan</a></li>
                     <li><a href="?page=data-barang-masuk"><i class="fas fa-arrow-left"></i>Kelola Barang Masuk</a></li>
-                    <li><a href="?page=data-barang-keluar"><i class="fas fa-arrow-right"></i>Kelola Barang Keluar</a></li>
+                    <li><a href="?page=data-barang-rijek"><i class="fas fa-trash"></i>Kelola Barang Rijek</a></li>
+                    <li><a href="?page=data-barang-keluar"><i class="fas fa-arrow-right"></i>Kelola Barang Keluar</a></li>i>
                 <?php elseif ($_SESSION['level'] == "Checker") : ?>
                     <li><a href="?page=data-barang-masuk"><i class="fas fa-arrow-left"></i>Data Barang Masuk</a></li>
                     <li><a href="?page=data-barang-rijek"><i class="fas fa-arrow-right"></i>Data Barang Rijek</a></li>
                 <?php elseif ($_SESSION['level'] == "Manager") : ?>
                     <li><a href="?page=data-user"><i class="fas fa-users"></i>Kelola Data User</a></li>
                     <li><a href="?page=data-barang-masuk"><i class="fas fa-arrow-left"></i>Laporan Barang Masuk</a></li>
+                    <li><a href="?page=data-barang-rijek"><i class="fa fa-trash"></i>Laporan Barang Rijek</a></li>
+                    <li><a href="?page=data-barang-periode"><i class="fas fa-calendar"></i>Laporan Barang Periode</a></li>
+                    <li><a href="?page=data-barang-habis"><i class="fas fa-code"></i>Laporan Barang Habis</a></li>
                     <li><a href="?page=data-barang-keluar"><i class="fas fa-arrow-right"></i>Laporan Barang Keluar</a></li>
                 <?php endif; ?>
                 <li><a href="?page=profile-setting"><i class="fas fa-user"></i>Profil</a></li>

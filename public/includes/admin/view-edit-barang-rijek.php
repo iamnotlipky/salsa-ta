@@ -113,7 +113,7 @@ if (isset($_POST['edit-barang-rijek'])) {
 														<?php if ($st['kd_satuan'] == $data['kd_satuan']) { ?>
 															<option value="<?= $st['kd_satuan'] ?>" selected><?= $st['satuan'] ?></option>
 														<?php } else { ?>
-															<option value="<?= $sd['kd_satuan'] ?>"><?= $mr['satuan'] ?></option>
+															<option value="<?= $st['kd_satuan'] ?>"><?= $st['satuan'] ?></option>
 														<?php } ?>
 													<?php } ?>
 												</select>

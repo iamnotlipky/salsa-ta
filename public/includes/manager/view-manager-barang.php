@@ -81,6 +81,13 @@ if ($_SESSION['level'] != "Manager") {
 									<?php endif; ?>
 								</tbody>
 							</table>
+					        <div class="float-right text-center mt-3">
+							<p>Tegal, <?php echo date("Y-m-d"); ?></p>
+							<div class="mt-3">
+								<p class="mb-5">Penanggung Jawab</p>
+								<p>( <?= $auth['nama_user'] ?> )</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

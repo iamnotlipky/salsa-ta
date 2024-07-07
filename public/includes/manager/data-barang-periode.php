@@ -97,11 +97,18 @@ if (isset($_POST['btnSearch'])) {
 										<?php } ?>
 									</tbody>
 								</table>
-							</div>
+								<div class="float-right text-center mt-3 pb-3">
+									<p>Tegal, <?php echo date("Y-m-d"); ?></p>
+									<div class="mt-3">
+										<p class="mb-5">Penanggung Jawab</p>
+										<p>( <?= $auth['nama_user'] ?> )</p>
+										</div>
+									</div>
+								</div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</se>
+</section>

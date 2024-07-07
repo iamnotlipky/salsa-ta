@@ -53,7 +53,7 @@ if (isset($_GET['export'])) {
 							<span>PT Semen Indonesia Distributor</span>
 						</div>
 						<div class="col-6 text-right">
-							<img src="../../assets/img/icon/logo.png" alt="logo" class="w-50 text-right">
+							<img src="assets/img/icon/logo.png" alt="logo" class="w-50 text-right">
 						</div>
 					</div>
 					<!-- <button class="btn btn-primary"><a href="pages/manager/BarangHabisPrint.php" style="color: white;">Export Excel</a></button> -->
@@ -65,7 +65,7 @@ if (isset($_GET['export'])) {
 								<tr>
 									<th>Kode barang</th>
 									<th>Nama barang</th>
-									<th>Lokasi</th>
+									<th>Layout</th>
 									<th>Supplier</th>
 									<th>Tanggal Masuk</th>
 									<th>Harga</th>
@@ -80,7 +80,7 @@ if (isset($_GET['export'])) {
 										<tr>
 											<td><?= $ds['kd_barang'] ?></td>
 											<td><?= $ds['nama_barang'] ?></td>
-											<td><?= $ds['lokasi'] ?></td>
+											<td><?= $ds['layout'] ?></td>
 											<td><?= $ds['nama_supplier'] ?></td>
 											<td><?= $ds['tanggal_masuk'] ?></td>
 											<td><?= number_format($ds['harga_barang']) ?></td>
@@ -95,6 +95,13 @@ if (isset($_GET['export'])) {
 								<?php endif; ?>
 							</t>
 						</table>
+				        <div class="float-right text-center mt-3">
+						<p>Tegal, <?php echo date("Y-m-d"); ?></p>
+						<div class="mt-3">
+							<p class="mb-5">Penanggung Jawab</p>
+							<p>( <?= $auth['nama_user'] ?> )</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

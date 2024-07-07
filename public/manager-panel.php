@@ -21,6 +21,9 @@ include "templates/header.php";
             case 'data-barang-masuk':
                 include "includes/manager/laporan-semua-barang.php";
                 break;
+            case 'data-barang-rijek':
+                include "includes/manager/laporan-barang-rijek.php";
+                break;
             case 'data-barang-keluar':
                 include "includes/global/data-barang-keluar.php";
                 break;

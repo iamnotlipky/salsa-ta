@@ -28,6 +28,7 @@
                 <?php elseif ($_SESSION['level'] == "Manager") : ?>
                     <li><a href="?page=data-user"><i class="fas fa-users"></i>Kelola Data User</a></li>
                     <li><a href="?page=data-barang-masuk"><i class="fas fa-arrow-left"></i>Laporan Barang Masuk</a></li>
+                    <li><a href="?page=data-barang-rijek"><i class="fa fa-trash"></i>Laporan Barang Rijek</a></li>
                     <li><a href="?page=data-barang-periode"><i class="fas fa-calendar"></i>Laporan Barang Periode</a></li>
                     <li><a href="?page=data-barang-habis"><i class="fas fa-code"></i>Laporan Barang Habis</a></li>
                     <li><a href="?page=data-barang-keluar"><i class="fas fa-arrow-right"></i>Laporan Barang Keluar</a></li>

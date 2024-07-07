@@ -90,7 +90,10 @@ if (isset($_POST['btn-approve'])) {
 							<div class="row">
 								<div class="col-sm-6">Nomor SPJ : <?php echo $id ?></div>
 								<div class="col-sm-6">
-									<p class="text-right"><span><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
+									<p>Kepada YTH <?= $detailTrans['nama_cust'] ?></p>
+									<p>
+										<?= $detailTrans['alamat_cust'] ?> (<?= $detailTrans['kontak_cust'] ?>)
+									</p>
 								</div>
 							</div>
 							<br>
@@ -127,22 +130,26 @@ if (isset($_POST['btn-approve'])) {
 								</tr> -->
 								</table>
 							</div>
-							<p class="mt-4 mb-3">Nama Supir Armada / Nomor Plat Armada : <?= $detailTrans['supir_armada']; ?> / <?= $detailTrans['nomor_armada']; ?></p>
+							<p class="text-right my-3">Tanggal SPJ : <?php echo $dd['tanggal_beli']; ?></p>
 							<div class="table-responsive">
-								<table class="table table-striped table-bordered" width="100%">
+								<table width="100%" class="text-center">
 									<tr>
-										<td>Nama Customer</td>
-										<td>Kontak Customer</td>
-										<td>Alamat Customer</td>
+										<td>Penerima</td>
+										<td>Pengirim</td>
+										<td>Mengetahui</td>
 									</tr>
 									<tr>
-										<td><?= $detailTrans['nama_cust']; ?></td>
-										<td><?= $detailTrans['kontak_cust']; ?></td>
-										<td><?= $detailTrans['alamat_cust']; ?></td>
+										<td height="75px"></td>
+										<td height="75px"></td>
+										<td height="75px"></td>
+									</tr>
+									<tr>
+										<td>( . . . . . . . . . . )</td>
+										<td><?= $detailTrans['supir_armada']; ?></td>
+										<td>( . . . . . . . . . . )</td>
 									</tr>
 								</table>
 							</div>
-							<p class="text-right my-3">Tanggal SPJ : <?php echo $dd['tanggal_beli']; ?></p>
 							<br>
 							<form method="post">
 								<input type="text" name="kd_transaksi" class="form-control" value="<?= $id; ?>" hidden>
