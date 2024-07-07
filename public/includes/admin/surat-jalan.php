@@ -7,6 +7,7 @@ $total  = $spj->selectSumWhere("transaksi", "sub_total", "kd_transaksi='$id'");
 $dataDetail = $spj->edit("detailTransaksi", "kd_transaksi", $id);
 $jumlah_barang = $spj->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$id'");
 $detailTrans = $spj->selectWhere("table_transaksi", "kd_transaksi", $id);
+$manager = $spj->select("table_user");
 
 if (isset($_POST['btn-approve'])) {
 	$kd_transaksi   = $spj->validateHtml($_POST['kd_transaksi']);
@@ -36,7 +37,6 @@ if (isset($_POST['btn-approve'])) {
 		.card {
 			box-shadow: none;
 			border: none;
-			margin-top: 225px;
 		}
 
 		.hd {
@@ -75,21 +75,29 @@ if (isset($_POST['btn-approve'])) {
 	<div class="section__content section__content--p30">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-9">
 					<div class="card">
 						<div class="card-body">
 							<div class="row mb-3">
-								<div class="col-6">
+								<div class="col-7">
 									<h4>Surat Perintah Jalan</h4>
 									<p>PT Semen Indonesia Distributor</p>
+									<p style="font-size: 14px;">Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
 								</div>
-								<div class="col-6">
-									<img src="assets/img/icon/logo-sid.webp" alt="logo" class="w-75 float-right">
+								<div class="col-5">
+									<img src="assets/img/icon/logo-sid.webp" alt="logo" class="w-100 float-right">
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-6">Nomor SPJ : <?php echo $id ?></div>
 								<div class="col-sm-6">
+									<div class="row">
+										<div class="col-6">Nomor Surat</div>
+										<div class="col-6">: <?php echo $id ?></div>
+										<div class="col-6">Nomor Armada</div>
+										<div class="col-6">: <?= $detailTrans['nomor_armada'] ?></div>
+									</div>
+								</div>
+								<div class="col-sm-6 text-center">
 									<p>Kepada YTH <?= $detailTrans['nama_cust'] ?></p>
 									<p>
 										<?= $detailTrans['alamat_cust'] ?> (<?= $detailTrans['kontak_cust'] ?>)
@@ -144,9 +152,13 @@ if (isset($_POST['btn-approve'])) {
 										<td height="75px"></td>
 									</tr>
 									<tr>
-										<td>( . . . . . . . . . . )</td>
-										<td><?= $detailTrans['supir_armada']; ?></td>
-										<td>( . . . . . . . . . . )</td>
+										<td width="30%">(<?= $detailTrans['nama_cust']; ?>)</td>
+										<td width="30%">(<?= $detailTrans['supir_armada']; ?>)</td>
+										<?php foreach ($manager as $mn) : ?>
+											<?php if ($mn['level'] == "Manager") : ?>
+												<td width="30%">(<?= $mn['nama_user']; ?>)</td>
+											<?php endif; ?>
+										<?php endforeach; ?>
 									</tr>
 								</table>
 							</div>

@@ -108,6 +108,7 @@ if (isset($_POST['add-barang-rijek'])) {
                                         <div class="form-group">
                                             <label for="">Satuan</label>
                                             <select name="satuan" class="form-control">
+                                                <option value=" ">Pilih Satuan</option>
                                                 <?php foreach ($getSatuan as $st) { ?>
                                                     <option value="<?= $st['kd_satuan'] ?>"><?= $st['satuan'] ?></option>
                                                 <?php } ?>

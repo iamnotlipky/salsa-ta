@@ -5065,6 +5065,11 @@ section {
   margin-bottom: 40px;
 }
 
+.statistic__item:hover {
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .statistic__item {
     padding: 20px 10px;

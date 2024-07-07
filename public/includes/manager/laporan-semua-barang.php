@@ -55,8 +55,9 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
         <div class="col-sm-12 rounded mb-5">
           <div class="row">
             <div class="col-6">
+              <h3>PT Semen Indonesia Distributor</h3>
+              <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
               <h4>Laporan Barang Masuk</h4>
-              <p>PT Semen Indonesia Distributor</p>
             </div>
             <div class="col-6 text-right">
               <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
@@ -108,9 +109,9 @@ $total  = $qb->selectCount("detailbarang", "kd_barang");
             <div class="float-right text-center mt-3">
               <p>Tegal, <?php echo date("Y-m-d"); ?></p>
               <div class="mt-3">
-                <p class="mb-5">Penanggung Jawab</p>
-                <p>( <?= $auth['nama_user'] ?> )</p>
-                </div>
+                <p class="pb-5">Penanggung Jawab</p>
+                <p class="pt-5">( <?= $auth['nama_user'] ?> )</p>
+              </div>
             </div>
           </div>
         </div>

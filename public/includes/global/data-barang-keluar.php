@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
       }
 </style>
 
-<section class="au-breadcrumb m-t-75">
+<section class="au-breadcrumb m-t-75 print-sid">
       <div class="section__content section__content--p30">
             <div class="container-fluid">
                   <div class="row">
@@ -62,7 +62,7 @@ if (isset($_GET['id'])) {
                                                 <li class="list-inline-item seprate">
                                                       <span>/</span>
                                                 </li>
-                                                <li class="list-inline-item">Kelola Barang Keluar</li>
+                                                <li class="list-inline-item">Laporan Barang Keluar</li>
                                           </ul>
                                     </div>
                               </div>
@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
       <div class="section__content section__content--p30">
             <div class="container-fluid">
                   <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 print-sid">
                               <div class="card">
                                     <div class="card-header">
                                           <h4>Cari Data Barang Keluar</h4>
@@ -96,11 +96,12 @@ if (isset($_GET['id'])) {
                   </div>
                   <div class="col-sm-12">
                         <?php if (isset($_GET['id'])) : ?>
-                              <div class="row print">
+                              <div class="row">
                                     <div class="col-6">
-                                          <h4>Data Barang Keluar</h4>
-                                          <p class="mb-5">PT Semen Indonesia Distributor</p>
-                                          <a href="#" class="btn btn-dark" onclick="window.print();">Cetak</a>
+                                          <h3>PT Semen Indonesia Distributor</h3>
+                                          <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
+                                          <h4>Laporan Barang Keluar</h4>
+                                          <a href="#" class="btn btn-dark mt-3" onclick="window.print();">Cetak</a>
                                     </div>
                                     <div class="col-6 text-right">
                                           <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
@@ -121,6 +122,7 @@ if (isset($_GET['id'])) {
                                           <td>Harga Satuan</td>
                                           <td>Jumlah</td>
                                           <td>Sub Total</td>
+                                          <td>Tanggal Beli</td>
                                     </tr>
                                     <?php foreach ($dataDetail as $dd) : ?>
                                           <tr>
@@ -129,8 +131,9 @@ if (isset($_GET['id'])) {
                                                 <td><?= $dd['harga_barang'] ?></td>
                                                 <td><?= $dd['jumlah'] ?></td>
                                                 <td><?= "Rp." . number_format($dd['sub_total']) . ",-" ?></td>
+                                                <td><?php echo $dd['tanggal_beli']; ?></td>
                                           </tr>
-                                    <?php endforeach ?>
+                                    <?php endforeach; ?>
                                     <tr>
                                           <td colspan="2"></td>
                                           <td>Jumlah Pembelian Barang</td>
@@ -141,72 +144,73 @@ if (isset($_GET['id'])) {
                                           <td colspan="2"></td>
                                           <td colspan="2">Total</td>
                                           <td><?php echo "Rp." . number_format($total['sum']) . ",-" ?></td>
+                                          <td></td>
                                     </tr>
                               </table>
                               <br>
-                              <p>Tanggal Beli : <?php echo $dd['tanggal_beli']; ?></p>
                               <div class="float-right text-center mt-3">
-                              <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                                    <p>Tegal, <?php echo date("Y-m-d"); ?></p>
                                     <div class="mt-3">
                                           <p class="mb-5">Penanggung Jawab</p>
                                           <p>( <?= $auth['nama_user'] ?> )</p>
-                              </div>
-                              <br>
-                        <?php endif ?>
-                        <?php if (!isset($_GET['id'])) : ?>
-                              <div class="row print">
-                                    <div class="col-6">
-                                          <h4>Data Barang Keluar</h4>
-                                          <p class="mb-5">PT Semen Indonesia Distributor</p>
-                                          <a href="#" class="btn btn-dark" onclick="window.print();">Cetak</a>
                                     </div>
-                                    <div class="col-6 text-right">
-                                          <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
+                                    <br>
+                              <?php endif; ?>
+                              <?php if (!isset($_GET['id'])) : ?>
+                                    <div class="row">
+                                          <div class="col-6">
+                                                <h3>PT Semen Indonesia Distributor</h3>
+                                                <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
+                                                <h4>Laporan Barang Keluar</h4>
+                                                <a href="#" class="btn btn-dark mt-3" onclick="window.print();">Cetak</a>
+                                          </div>
+                                          <div class="col-6 text-right">
+                                                <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
+                                          </div>
                                     </div>
-                              </div>
-                              <br>
-                              <table class="table table-hover table-bordered" width="100%;" align="center">
-                                    <thead>
-                                          <tr>
-                                                <td>Kode Transaksi</td>
-                                                <td>Nama Penginput</td>
-                                                <td>Jumlah Beli</td>
-                                                <td>Total Harga</td>
-                                                <td>Tanggal Beli</td>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          <?php foreach ($dataTransaksi as $dts) : ?>
+                                    <br>
+                                    <table class="table table-hover table-bordered" width="100%;" align="center">
+                                          <thead>
                                                 <tr>
-                                                      <td><?= $dts['kd_transaksi'] ?></td>
-                                                      <td><?= $dts['nama_user'] ?></td>
-                                                      <td><?= $dts['jumlah_beli'] ?></td>
-                                                      <td><?= "Rp." . number_format($dts['total_harga']) . ",-" ?></td>
-                                                      <td><?= $dts['tanggal_beli'] ?></td>
+                                                      <td>Kode Transaksi</td>
+                                                      <td>Nama Penginput</td>
+                                                      <td>Jumlah Beli</td>
+                                                      <td>Total Harga</td>
+                                                      <td>Tanggal Beli</td>
                                                 </tr>
-                                          <?php endforeach ?>
-                                          <?php
-                                          $grand = $trs->selectSum("transaksi", "sub_total");
-                                          ?>
-                                          <tr>
-                                                <td colspan="2"></td>
-                                                <td>Jumlah Total</td>
-                                                <td><?php echo "Rp." . number_format($grand['sum']) . ",-" ?></td>
-                                                <td></td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                              <div class="float-right text-center mt-3">
-                              <p>Tegal, <?php echo date("Y-m-d"); ?></p>
-                                    <div class="mt-3">
-                                          <p class="mb-5">Penanggung Jawab</p>
-                                          <p>( <?= $auth['nama_user'] ?> )</p>
+                                          </thead>
+                                          <tbody>
+                                                <?php foreach ($dataTransaksi as $dts) : ?>
+                                                      <tr>
+                                                            <td><?= $dts['kd_transaksi'] ?></td>
+                                                            <td><?= $dts['nama_user'] ?></td>
+                                                            <td><?= $dts['jumlah_beli'] ?></td>
+                                                            <td><?= "Rp." . number_format($dts['total_harga']) . ",-" ?></td>
+                                                            <td><?= $dts['tanggal_beli'] ?></td>
+                                                      </tr>
+                                                <?php endforeach; ?>
+                                                <?php
+                                                $grand = $trs->selectSum("transaksi", "sub_total");
+                                                ?>
+                                                <tr>
+                                                      <td colspan="2"></td>
+                                                      <td>Jumlah Total</td>
+                                                      <td><?php echo "Rp." . number_format($grand['sum']) . ",-" ?></td>
+                                                      <td></td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                                    <div class="float-right text-center mt-3">
+                                          <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                                          <div class="mt-3">
+                                                <p class="mb-5">Penanggung Jawab</p>
+                                                <p>( <?= $auth['nama_user'] ?> )</p>
+                                          </div>
+                                          <br>
+                                    <?php endif; ?>
+                                    </div>
                               </div>
-                              <br>
-                        <?php endif ?>
                   </div>
-            </div>
-      </div>
 </section>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
@@ -219,48 +223,46 @@ if (isset($_GET['id'])) {
                         </button>
                   </div>
                   <div class="modal-body">
-                        <div class="table-responsive">
-                              <table id="myDataTables" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                          <tr>
-                                                <td>Kode Transaksi</td>
-                                                <td>Nama Penginput</td>
-                                                <td>Jumlah Beli</td>
-                                                <td>Total Harga</td>
-                                                <td>Tanggal Beli</td>
-                                                <td>Status</td>
-                                                <td>Opsi</td>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          <?php if (!empty($dataTransaksi)) : ?>
-                                                <?php foreach ($dataTransaksi as $dts) : ?>
-                                                      <tr>
-                                                            <td><a href="?page=data-barang-keluar&id=<?= $dts['kd_transaksi']; ?>"><?= $dts['kd_transaksi'] ?></a></td>
-                                                            <td><?= $dts['nama_user'] ?></td>
-                                                            <td><?= $dts['jumlah_beli'] ?></td>
-                                                            <td><?= $dts['total_harga'] ?></td>
-                                                            <td><?= $dts['tanggal_beli'] ?></td>
-                                                            <td><?php if ($dts['status'] == "Unapproved") : ?>
-                                                                        <span class="badge badge-danger">Unapproved</span>
-                                                                  <?php elseif ($dts['status'] == "Approved") : ?>
-                                                                        <span class="badge badge-success">Approved</span>
-                                                                  <?php endif; ?>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                  <a href="?page=surat-jalan&id=<?= $dts['kd_transaksi'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
+                        <table id="myDataTables" class="table table-responsive table-striped table-bordered" style="width:100%">
+                              <thead>
+                                    <tr>
+                                          <td>Kode Transaksi</td>
+                                          <td>Nama Penginput</td>
+                                          <td>Jumlah Beli</td>
+                                          <td>Total Harga</td>
+                                          <td>Tanggal Beli</td>
+                                          <td>Status</td>
+                                          <td>Opsi</td>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                                    <?php if (!empty($dataTransaksi)) : ?>
+                                          <?php foreach ($dataTransaksi as $dts) : ?>
+                                                <tr>
+                                                      <td><a href="?page=data-barang-keluar&id=<?= $dts['kd_transaksi']; ?>"><?= $dts['kd_transaksi'] ?></a></td>
+                                                      <td><?= $dts['nama_user'] ?></td>
+                                                      <td><?= $dts['jumlah_beli'] ?></td>
+                                                      <td><?= $dts['total_harga'] ?></td>
+                                                      <td><?= $dts['tanggal_beli'] ?></td>
+                                                      <td><?php if ($dts['status'] == "Unapproved") : ?>
+                                                                  <span class="badge badge-danger">Unapproved</span>
+                                                            <?php elseif ($dts['status'] == "Approved") : ?>
+                                                                  <span class="badge badge-success">Approved</span>
+                                                            <?php endif; ?>
+                                                      </td>
+                                                      <td class="text-center">
+                                                            <a href="?page=surat-jalan&id=<?= $dts['kd_transaksi'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
 
-                                                            </td>
-                                                      </tr>
-                                                <?php endforeach ?>
-                                          <?php else : ?>
-                                                <tr class="text-center">
-                                                      <td colspan="5">Tidak Ada Data</td>
+                                                      </td>
                                                 </tr>
-                                          <?php endif; ?>
-                                    </tbody>
-                              </table>
-                        </div>
+                                          <?php endforeach ?>
+                                    <?php else : ?>
+                                          <tr class="text-center">
+                                                <td colspan="5">Tidak Ada Data</td>
+                                          </tr>
+                                    <?php endif; ?>
+                              </tbody>
+                        </table>
                   </div>
             </div>
       </div>

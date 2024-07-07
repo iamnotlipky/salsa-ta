@@ -25,6 +25,7 @@
     <?php
     require_once "../../../config/config.php";
     require_once "../../../functions/functions.php";
+    require_once "../../../functions/sessions.php";
 
     $qb = new lsp();
     if (!isset($_GET['dateAwal']) || !isset($_GET['dateAkhir'])) {
@@ -40,8 +41,9 @@
         <div class="col-12" style="padding: 50px;">
             <div class="row">
                 <div class="col-6">
+                    <h3>PT Semen Indonesia Distributor</h3>
+                    <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
                     <h4>Laporan Barang Periode</h4>
-                    <p>PT Semen Indonesia Distributor</p>
                     <p>Dari tanggal : <?php echo $_GET['dateAwal']; ?> sampai <?php echo $_GET['dateAkhir'] ?></p>
                 </div>
                 <div class="col-6 text-right">
@@ -95,10 +97,10 @@
                 </table>
             </div>
             <div class="float-right text-center mt-3">
-              <p>Tegal, <?php echo date("Y-m-d"); ?></p>
-              <div class="mt-3">
-                <p class="mb-5">Penanggung Jawab</p>
-                <p>( <?= $auth['nama_user'] ?> )</p>
+                <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                <div class="mt-3">
+                    <p class="mb-5">Penanggung Jawab</p>
+                    <p>( <?= $auth['nama_user'] ?> )</p>
                 </div>
             </div>
         </div>

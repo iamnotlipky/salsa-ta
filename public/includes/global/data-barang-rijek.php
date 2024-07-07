@@ -26,7 +26,13 @@ if (isset($_GET['delete'])) {
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Data Barang Rijek</li>
+                                <li class="list-inline-item">
+                                    <?php if ($auth['level'] == "Admin") : ?>
+                                        Kelola Barang Rijek
+                                    <?php else : ?>
+                                        Data Barang Rijek
+                                    <?php endif; ?>
+                                </li>
                             </ul>
                         </div>
                     </div>

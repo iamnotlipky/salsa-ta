@@ -32,7 +32,7 @@ if (isset($_GET['export'])) {
 								<li class="list-inline-item seprate">
 									<span>/</span>
 								</li>
-								<li class="list-inline-item">Data Barang Habis</li>
+								<li class="list-inline-item">Laporan Barang Habis</li>
 							</ul>
 						</div>
 					</div>
@@ -49,15 +49,16 @@ if (isset($_GET['export'])) {
 				<div class="col-sm-12 mb-5" style="background: white; padding: 50px;">
 					<div class="row">
 						<div class="col-6">
-							<h3>Data Barang Habis</h3>
-							<span>PT Semen Indonesia Distributor</span>
+							<h3>PT Semen Indonesia Distributor</h3>
+							<p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
+							<h4>Laporan Barang Habis</h4>
 						</div>
 						<div class="col-6 text-right">
-							<img src="assets/img/icon/logo.png" alt="logo" class="w-50 text-right">
+							<img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
 						</div>
 					</div>
 					<!-- <button class="btn btn-primary"><a href="pages/manager/BarangHabisPrint.php" style="color: white;">Export Excel</a></button> -->
-					<button class="btn btn-dark" onclick="window.print()">Cetak</button>
+					<button class="btn btn-dark mt-3" onclick="window.print()">Cetak</button>
 					<p class="text-right my-3">Tanggal Cetak : <?= date("Y-m-d"); ?></p>
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered" style="width:100%">
@@ -95,11 +96,11 @@ if (isset($_GET['export'])) {
 								<?php endif; ?>
 							</t>
 						</table>
-				        <div class="float-right text-center mt-3">
-						<p>Tegal, <?php echo date("Y-m-d"); ?></p>
-						<div class="mt-3">
-							<p class="mb-5">Penanggung Jawab</p>
-							<p>( <?= $auth['nama_user'] ?> )</p>
+						<div class="float-right text-center mt-3">
+							<p>Tegal, <?php echo date("Y-m-d"); ?></p>
+							<div class="mt-3">
+								<p class="mb-5">Penanggung Jawab</p>
+								<p>( <?= $auth['nama_user'] ?> )</p>
 							</div>
 						</div>
 					</div>
