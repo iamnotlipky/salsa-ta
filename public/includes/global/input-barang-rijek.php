@@ -143,7 +143,7 @@ if (isset($_POST['add-barang-rijek'])) {
                             </div>
                             <div class="card-footer">
                                 <button name="add-barang-rijek" class="btn btn-primary"><i class="fa fa-download"></i> Simpan</button>
-                                <button type="reset" class="btn btn-danger"><i class="fa fa-eraser"></i> Hapus</button>
+                                <button type="reset" class="btn btn-danger"><i class="fa fa-eraser"></i> Reset</button>
                             </div>
                         </div>
                     </form>

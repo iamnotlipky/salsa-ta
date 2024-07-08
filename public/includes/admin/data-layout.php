@@ -96,7 +96,7 @@ if (isset($_GET['edit'])) {
                                 <hr>
                                 <?php if (isset($_GET['edit'])) : ?>
                                     <button type="submit" name="getUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Konfirmasi</button>
-                                    <a href="?page=data-layout" class="btn btn-danger">Batal</a>
+                                    <a href="?page=data-layout" class="btn btn-danger"> <i class="fa fa-repeat"></i> Batal</a>
                                 <?php endif ?>
                                 <?php if (!isset($_GET['edit'])) : ?>
                                     <button type="submit" name="getSave" class="btn btn-primary"><i class="fa fa-download"></i> Simpan</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 30, 2024 at 01:49 PM
+-- Generation Time: Jul 08, 2024 at 09:34 PM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.0
 
@@ -28,21 +28,21 @@ SET time_zone = "+00:00";
 -- (See below for the actual view)
 --
 CREATE TABLE `detailbarang` (
-`gambar` varchar(255)
-,`harga_barang` int
-,`kd_barang` varchar(7)
+`kd_barang` varchar(7)
+,`nama_barang` varchar(40)
 ,`kd_layout` varchar(7)
 ,`kd_satuan` varchar(7)
 ,`kd_supplier` varchar(7)
+,`tanggal_masuk` date
+,`harga_barang` int
+,`stok_barang` int
+,`gambar` varchar(255)
 ,`keterangan` varchar(200)
+,`status` varchar(25)
 ,`layout` varchar(30)
-,`nama_barang` varchar(40)
+,`satuan` varchar(40)
 ,`nama_supplier` varchar(40)
 ,`no_telp` varchar(13)
-,`satuan` varchar(40)
-,`status` varchar(25)
-,`stok_barang` int
-,`tanggal_masuk` date
 );
 
 -- --------------------------------------------------------
@@ -52,21 +52,21 @@ CREATE TABLE `detailbarang` (
 -- (See below for the actual view)
 --
 CREATE TABLE `detailbarangrijek` (
-`gambar` varchar(255)
-,`harga_barang` int
-,`kd_barang` varchar(7)
+`kd_barang` varchar(7)
+,`nama_barang` varchar(40)
 ,`kd_layout` varchar(7)
 ,`kd_satuan` varchar(7)
 ,`kd_supplier` varchar(7)
+,`tanggal_masuk` date
+,`harga_barang` int
+,`stok_barang` int
+,`gambar` varchar(255)
 ,`keterangan` varchar(200)
+,`status` varchar(25)
 ,`layout` varchar(30)
-,`nama_barang` varchar(40)
+,`satuan` varchar(40)
 ,`nama_supplier` varchar(40)
 ,`no_telp` varchar(13)
-,`satuan` varchar(40)
-,`status` varchar(25)
-,`stok_barang` int
-,`tanggal_masuk` date
 );
 
 -- --------------------------------------------------------
@@ -76,23 +76,23 @@ CREATE TABLE `detailbarangrijek` (
 -- (See below for the actual view)
 --
 CREATE TABLE `detailtransaksi` (
-`alamat_cust` varchar(255)
-,`harga_barang` int
-,`jumlah` int
-,`jumlah_beli` int
-,`kd_barang` varchar(11)
-,`kd_pretransaksi` varchar(7)
-,`kd_satuan` varchar(7)
+`kd_pretransaksi` varchar(7)
 ,`kd_transaksi` varchar(7)
-,`kontak_cust` varchar(25)
-,`nama_barang` varchar(40)
-,`nama_cust` varchar(25)
-,`nomor_armada` varchar(125)
-,`satuan` varchar(40)
+,`kd_barang` varchar(11)
+,`jumlah` int
 ,`sub_total` int
-,`supir_armada` varchar(125)
-,`tanggal_beli` date
+,`nama_barang` varchar(40)
+,`harga_barang` int
+,`kd_satuan` varchar(7)
+,`satuan` varchar(40)
+,`jumlah_beli` int
 ,`total_harga` int
+,`tanggal_beli` date
+,`nama_cust` varchar(25)
+,`kontak_cust` varchar(25)
+,`alamat_cust` varchar(255)
+,`nomor_armada` varchar(125)
+,`supir_armada` varchar(125)
 );
 
 -- --------------------------------------------------------
@@ -115,14 +115,6 @@ CREATE TABLE `table_barang` (
   `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `table_barang`
---
-
-INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_layout`, `kd_supplier`, `kd_satuan`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `gambar`, `keterangan`, `status`) VALUES
-('BM001', 'Barang A', 'LI001', 'SP001', 'ST001', '2024-06-30', 10000, 3, '1719695055344.jpg', 'Barang A', 'Unapproved'),
-('BM002', 'Sample B', 'LI001', 'SP001', 'ST001', '2024-06-30', 20000, 4, '1719727222315.jpg', 'Sample B', 'Unapproved');
-
 -- --------------------------------------------------------
 
 --
@@ -143,13 +135,6 @@ CREATE TABLE `table_barang_rijek` (
   `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `table_barang_rijek`
---
-
-INSERT INTO `table_barang_rijek` (`kd_barang`, `nama_barang`, `kd_layout`, `kd_supplier`, `kd_satuan`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `gambar`, `keterangan`, `status`) VALUES
-('BR001', 'Rijek A', 'LI001', 'SP001', 'ST001', '2024-06-30', 10000, 5, '1719728199235.jpg', 'Kantong semen sobek', 'Approved');
-
 -- --------------------------------------------------------
 
 --
@@ -160,13 +145,6 @@ CREATE TABLE `table_layout` (
   `kd_layout` varchar(7) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `layout` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `table_layout`
---
-
-INSERT INTO `table_layout` (`kd_layout`, `layout`) VALUES
-('LI001', 'Layout A');
 
 -- --------------------------------------------------------
 
@@ -181,29 +159,6 @@ CREATE TABLE `table_pretransaksi` (
   `jumlah` int NOT NULL,
   `sub_total` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `table_pretransaksi`
---
-
-INSERT INTO `table_pretransaksi` (`kd_pretransaksi`, `kd_transaksi`, `kd_barang`, `jumlah`, `sub_total`) VALUES
-('AN001', 'TR001', 'BM001', 4, 20000),
-('AN002', 'TR002', 'BM001', 2, 20000),
-('AN003', 'TR002', 'BM002', 2, 40000),
-('AN004', 'TR003', 'BM001', 2, 20000),
-('AN005', 'TR004', 'BM002', 2, 40000),
-('AN006', 'TR005', 'BM002', 2, 40000),
-('AN007', 'TR006', 'BM001', 2, 20000),
-('AN008', 'TR006', 'BM002', 3, 60000),
-('AN009', 'TR007', 'BM001', 3, 30000),
-('AN010', 'TR007', 'BM002', 1, 20000),
-('AN011', 'TR008', 'BM002', 1, 20000),
-('AN012', 'TR009', 'BM002', 2, 40000),
-('AN013', 'TR010', 'BM002', 1, 20000),
-('AN014', 'TR011', 'BM002', 1, 20000),
-('AN015', 'TR012', 'BM002', 1, 20000),
-('AN016', 'TR013', 'BM001', 1, 10000),
-('AN017', 'TR014', 'BM001', 1, 10000);
 
 --
 -- Triggers `table_pretransaksi`
@@ -238,13 +193,6 @@ CREATE TABLE `table_satuan` (
   `satuan` varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `table_satuan`
---
-
-INSERT INTO `table_satuan` (`kd_satuan`, `satuan`) VALUES
-('ST001', 'Sak');
-
 -- --------------------------------------------------------
 
 --
@@ -257,13 +205,6 @@ CREATE TABLE `table_supplier` (
   `alamat` varchar(255) NOT NULL,
   `no_telp` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `table_supplier`
---
-
-INSERT INTO `table_supplier` (`kd_supplier`, `nama_supplier`, `alamat`, `no_telp`) VALUES
-('SP001', 'Supplier A', 'Alamat Supplier A', '087811223344');
 
 -- --------------------------------------------------------
 
@@ -285,18 +226,6 @@ CREATE TABLE `table_transaksi` (
   `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `table_transaksi`
---
-
-INSERT INTO `table_transaksi` (`kd_transaksi`, `kd_user`, `jumlah_beli`, `total_harga`, `tanggal_beli`, `nama_cust`, `kontak_cust`, `alamat_cust`, `nomor_armada`, `supir_armada`, `status`) VALUES
-('TR004', 'US004', 2, 40000, '2024-06-30', 'Customer A', '081234563456', 'Jalan Raya Baru No. II', '', '', 'Approved'),
-('TR005', 'US004', 2, 40000, '2024-06-30', 'Salsa Cust A', '012345671234', 'Jalan Raya Pantura', 'G 2345 TG', 'Supir A', 'Approved'),
-('TR007', 'US004', 4, 50000, '2024-06-30', 'Cust A', '087878789090', 'Jalan Baru', 'G 1234 TR', 'Supir B', 'Approved'),
-('TR012', 'US004', 1, 20000, '2024-06-30', 'Cust A', '087878789090', 'Jalan Baru', 'G 1234 TR', 'Supir B', 'Approved'),
-('TR013', 'US004', 1, 10000, '2024-06-30', 'Cust A', '087878789090', 'Jalan Baru', 'G 1234 TR', 'Supir B', 'Unapproved'),
-('TR014', 'US004', 1, 10000, '2024-06-30', 'Cust A', '087878789090', 'Jalan Baru', 'G 1234 TR', 'Supir B', 'Unapproved');
-
 -- --------------------------------------------------------
 
 --
@@ -317,9 +246,9 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`kd_user`, `nama_user`, `username`, `password`, `foto_user`, `level`) VALUES
-('US001', 'Manager', 'manager', 'bWFuYWdlcjEyMw==', '1716778063732.jpeg', 'Manager'),
-('US003', 'Checker', 'checker', 'Y2hlY2tlcjEyMw==', '1718764160170.jpg', 'Checker'),
-('US004', 'Admin', 'admin', 'YWRtaW4xMjM=', '1716778025352.jpeg', 'Admin');
+('US001', 'PT SID Manager', 'manager', 'bWFuYWdlcjEyMw==', 'default.jpg', 'Manager'),
+('US003', 'PT SID Checker', 'checker', 'Y2hlY2tlcjEyMw==', 'default.jpg', 'Checker'),
+('US004', 'PT SID Admin', 'admin', 'YWRtaW4xMjM=', 'default.jpg', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -328,12 +257,12 @@ INSERT INTO `table_user` (`kd_user`, `nama_user`, `username`, `password`, `foto_
 -- (See below for the actual view)
 --
 CREATE TABLE `transaksi` (
-`jumlah` int
-,`kd_barang` varchar(11)
-,`kd_pretransaksi` varchar(7)
+`kd_pretransaksi` varchar(7)
 ,`kd_transaksi` varchar(7)
-,`nama_barang` varchar(40)
+,`kd_barang` varchar(11)
+,`jumlah` int
 ,`sub_total` int
+,`nama_barang` varchar(40)
 );
 
 -- --------------------------------------------------------
@@ -343,13 +272,13 @@ CREATE TABLE `transaksi` (
 -- (See below for the actual view)
 --
 CREATE TABLE `transaksi_terbaru` (
-`jumlah_beli` int
-,`kd_transaksi` varchar(7)
+`kd_transaksi` varchar(7)
 ,`kd_user` varchar(7)
-,`nama_user` varchar(20)
-,`status` varchar(25)
-,`tanggal_beli` date
+,`jumlah_beli` int
 ,`total_harga` int
+,`tanggal_beli` date
+,`status` varchar(25)
+,`nama_user` varchar(20)
 );
 
 -- --------------------------------------------------------

@@ -97,10 +97,11 @@ if (isset($_POST['getUpdate'])) {
                                 </div>
                                 <?php if (isset($_GET['edit'])) : ?>
                                     <button type="submit" name="getUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Konfirmasi</button>
-                                    <a href="?page=data-satuan" class="btn btn-danger">Batal</a>
+                                    <a href="?page=data-satuan" class="btn btn-danger"> <i class="fa fa-repeat"></i> Batal</a>
                                 <?php endif ?>
                                 <?php if (!isset($_GET['edit'])) : ?>
                                     <button type="submit" name="getSave" class="btn btn-primary"><i class="fa fa-download"></i> Simpan</button>
+                                    <button type="reset" class="btn btn-danger"><i class="fa fa-eraser"></i> Reset</button>
                                 <?php endif ?>
                             </form>
                         </div>

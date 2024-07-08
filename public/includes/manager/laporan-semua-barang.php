@@ -81,20 +81,21 @@ $total  = $qb->selectCountWhere("detailbarang", "kd_barang", "status='Approved'"
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($dataB as $ds) : ?>
-                  <?php if ($ds['status'] == "Approved") : ?>
-                    <tr>
-                      <td><?= $ds['kd_barang'] ?></td>
-                      <td><?= $ds['nama_barang'] ?></td>
-                      <td><?= $ds['layout'] ?></td>
-                      <td><?= $ds['nama_supplier'] ?></td>
-                      <td><?= date_ind($ds['tanggal_masuk']) ?></td>
-                      <td><?= number_format($ds['harga_barang']) ?></td>
-                      <td><?= $ds['stok_barang'] ?></td>
-                      <td><?= $ds['satuan'] ?></td>
-                    </tr>
-                  <?php endif; ?>
-                <?php endforeach; ?>
+                <?php if (!empty($dataB)) : ?>
+                  <?php foreach ($dataB as $ds) : ?>
+                    <?php if ($ds['status'] == "Approved") : ?>
+                      <tr>
+                        <td><?= $ds['kd_barang'] ?></td>
+                        <td><?= $ds['nama_barang'] ?></td>
+                        <td><?= $ds['layout'] ?></td>
+                        <td><?= $ds['nama_supplier'] ?></td>
+                        <td><?= date_ind($ds['tanggal_masuk']) ?></td>
+                        <td><?= number_format($ds['harga_barang']) ?></td>
+                        <td><?= $ds['stok_barang'] ?></td>
+                        <td><?= $ds['satuan'] ?></td>
+                      </tr>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
               </tbody>
               <tr>
                 <td colspan="7">Total barang yang di miliki</td>
@@ -104,6 +105,11 @@ $total  = $qb->selectCountWhere("detailbarang", "kd_barang", "status='Approved'"
                 <td colspan="7">Jumlah Model Barang</td>
                 <td><?php echo $total['count']; ?></td>
               </tr>
+            <?php else : ?>
+              <tr class="text-center">
+                <td colspan="8">Tidak Ada Data</td>
+              </tr>
+            <?php endif; ?>
             </table>
             <div class="float-right text-center mt-3">
               <p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>

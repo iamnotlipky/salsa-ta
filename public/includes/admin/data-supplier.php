@@ -35,8 +35,8 @@ if (isset($_POST['getSave'])) {
     if ($kd_supplier == " " || empty($kd_supplier) || $nama_supplier == " " || empty($nama_supplier) || $nohp_supplier == " " || empty($nohp_supplier) || $alamat == " " || empty($alamat)) {
         $response = ['response' => 'negative', 'alert' => 'Lengkapi formulir data supplier.'];
     } else {
-        $validno = substr($nohp_supplier, 0, 2);
-        if ($validno != "08") {
+        $validno = substr($nohp_supplier, 0, 1);
+        if ($validno != "0") {
             $response = ['response' => 'negative', 'alert' => 'Masukan nomor telepon yang valid.'];
         } else {
             if (strlen($nohp_supplier) < 9) {
@@ -58,8 +58,8 @@ if (isset($_POST['getUpdate'])) {
     if ($kd_supplier == "" || $nama_supplier == "" || $nohp_supplier == "" || $alamat == "") {
         $response = ['response' => 'negative', 'alert' => 'Lengkapi formulir data supplier.'];
     } else {
-        $validno = substr($nohp_supplier, 0, 2);
-        if ($validno != "08") {
+        $validno = substr($nohp_supplier, 0, 1);
+        if ($validno != "0") {
             $response = ['response' => 'negative', 'alert' => 'Masukan nomor telepon yang valid.'];
         } else {
             if (strlen($nohp_supplier) < 9) {
@@ -126,10 +126,11 @@ if (isset($_POST['getUpdate'])) {
                                 </div>
                                 <?php if (isset($_GET['edit'])) : ?>
                                     <button type="submit" name="getUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Konfirmasi</button>
-                                    <a href="?page=data-supplier" class="btn btn-danger">Batal</a>
+                                    <a href="?page=data-supplier" class="btn btn-danger"> <i class="fa fa-repeat"></i> Batal</a>
                                 <?php endif ?>
                                 <?php if (!isset($_GET['edit'])) : ?>
                                     <button type="submit" name="getSave" class="btn btn-primary"><i class="fa fa-download"></i> Simpan</button>
+                                    <button type="reset" class="btn btn-danger"><i class="fa fa-eraser"></i> Reset</button>
                                 <?php endif ?>
                             </form>
                         </div>

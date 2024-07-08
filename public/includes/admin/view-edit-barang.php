@@ -179,7 +179,7 @@ if (isset($_POST['edit-barang'])) {
 								</div>
 							</div>
 							<div class="card-footer">
-								<button name="edit-barang" class="btn btn-primary"><i class="fa fa-download"></i> Konfirmasi</button>
+								<button name="edit-barang" class="btn btn-primary"><i class="fa fa-check"></i> Konfirmasi</button>
 								<a href="?page=data-barang-masuk" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 							</div>
 						</div>

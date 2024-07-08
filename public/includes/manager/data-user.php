@@ -99,8 +99,8 @@ if (isset($_GET['delete'])) {
                                         <option value="Checker">Checker</option>
                                     </select>
                                 </div>
-                                <button name="btnInput" class="au-btn au-btn--green m-b-20" type="submit">Konfirmasi</button>
-                                <button name="btnRegister" class="au-btn btn-danger m-b-20" type="reset">Batal</button>
+                                <button name="btnInput" class="btn btn-primary m-b-20" type="submit">Konfirmasi</button>
+                                <button name="btnRegister" class="btn btn-danger m-b-20" type="reset">Batal</button>
                             </form>
                         </div>
                     </div>

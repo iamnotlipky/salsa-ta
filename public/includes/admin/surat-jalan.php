@@ -172,7 +172,7 @@ if (isset($_POST['btn-approve'])) {
 								<?php if ($detailTrans['status'] == "Approved") : ?>
 									<a href="#" class="btn btn-info ds" onclick="window.print()"><i class="fa fa-print"></i> Cetak</a>
 								<?php endif; ?>
-								<a href="?page=data-barang-keluar" class="btn btn-danger ds">Kembali</a>
+								<a href="?page=data-barang-keluar" class="btn btn-danger ds"><i class="fa fa-repeat"></i> Kembali</a>
 							</form>
 						</div>
 					</div>

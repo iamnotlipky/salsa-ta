@@ -129,13 +129,13 @@ if (isset($_GET['delete'])) {
                                         </div>
                                         <div class="form-group">
                                             <label for="">Quantity</label>
-                                            <input type="number" class="form-control" name="jumlah" value="" id="jumjum" min="0" autocomplete="off">
+                                            <input type="number" class="form-control" name="jumlah" value="" id="jumjum" min="0" required>
                                         </div>
-                                        <div class="form-group">
+                                        <div class=" form-group">
                                             <label for="">Total</label>
                                             <input type="text" class="form-control" max="100" name="total" readonly id="totals">
                                         </div>
-                                        <button class="btn btn-primary" name="simpan-barang"><i class="fa fa-list"></i> Tambah Ke Antrian</button>
+                                        <button class="btn btn-primary" name="simpan-barang"><i class="fa fa-arrow-right"></i> Tambah Ke Antrian</button>
                                     </div>
                                 </div>
                             </form>
@@ -152,7 +152,7 @@ if (isset($_GET['delete'])) {
                                 <a class="btn btn-success" id="pembayaran" href="?page=cetak-surat-jalan"> Cetak Surat Jalan <i class="fa fa-arrow-right"></i></a>
                                 <br>
                                 <br>
-                            <?php endif ?>
+                            <?php endif; ?>
                             <?php
                             $kr        = new lsp();
                             $transkode = $kr->autokode("table_transaksi", "kd_transaksi", "TR");
@@ -160,7 +160,6 @@ if (isset($_GET['delete'])) {
                             $sql       = "SELECT SUM(sub_total) as sub FROM table_pretransaksi WHERE kd_transaksi = '$transkode'";
                             $exec      = mysqli_query($con, $sql);
                             $assoc     = mysqli_fetch_assoc($exec);
-
                             ?>
                             <table class="table table-striped table-bordered table-responsive">
                                 <tr>
@@ -168,7 +167,7 @@ if (isset($_GET['delete'])) {
                                     <td>Nama Barang</td>
                                     <td>Quantity</td>
                                     <td>Sub Total</td>
-                                    <td>Batal beli</td>
+                                    <td>Opsi</td>
                                 </tr>
                                 <?php
                                 if (count($datas) > 0) {
@@ -239,25 +238,21 @@ if (isset($_GET['delete'])) {
                             <td>Nama Barang</td>
                             <td>Harga</td>
                             <td>Stok</td>
+                            <td>Status</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($barangs)) : ?>
-                            <?php foreach ($barangs as $brs) {
-                                if ($brs['status'] == "Approved") { ?>
-                                    <tr>
-                                        <td><a href="admin-panel.php?page=input-barang-keluar&get-barang&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
-                                        <td><?php echo $brs['nama_barang'] ?></td>
-                                        <td><?php echo $brs['harga_barang'] ?></td>
-                                        <td><?php echo $brs['stok_barang'] ?></td>
-                                    </tr>
-                            <?php }
-                            } ?>
-                        <?php else : ?>
-                            <tr class="text-center">
-                                <td colspan="4">Tidak Ada Barang Tersedia</td>
-                            </tr>
-                        <?php endif; ?>
+                        <?php foreach ($barangs as $brs) {
+                            if ($brs['status'] == "Approved") { ?>
+                                <tr>
+                                    <td><a href="admin-panel.php?page=input-barang-keluar&get-barang&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
+                                    <td><?php echo $brs['nama_barang'] ?></td>
+                                    <td><?php echo $brs['harga_barang'] ?></td>
+                                    <td><?php echo $brs['stok_barang'] ?></td>
+                                    <td><span class="badge badge-success"><?= $brs['status'] ?></span></td>
+                                </tr>
+                        <?php }
+                        } ?>
                     </tbody>
                 </table>
             </div>

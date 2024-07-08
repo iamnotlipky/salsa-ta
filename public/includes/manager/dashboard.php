@@ -107,33 +107,27 @@ if ($_SESSION['level'] != "Manager") {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (!empty($dataTransaksi)) : ?>
-                                        <?php foreach ($dataTransaksi as $dts) : ?>
-                                            <?php if ($dts['status'] == "Unapproved") : ?>
-                                                <tr>
-                                                    <td><?= $dts['kd_transaksi'] ?></td>
-                                                    <td><?= $dts['nama_user'] ?></td>
-                                                    <td><?= $dts['jumlah_beli'] ?></td>
-                                                    <td><?= $dts['total_harga'] ?></td>
-                                                    <td><?= date_ind($dts['tanggal_beli']) ?></td>
-                                                    <td><?php if ($dts['status'] == "Unapproved") : ?>
-                                                            <span class="badge badge-danger">Unapproved</span>
-                                                        <?php elseif ($dts['status'] == "Approved") : ?>
-                                                            <span class="badge badge-success">Approved</span>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="?page=surat-jalan&id=<?= $dts['kd_transaksi'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
+                                    <?php foreach ($dataTransaksi as $dts) : ?>
+                                        <?php if ($dts['status'] == "Unapproved") : ?>
+                                            <tr>
+                                                <td><?= $dts['kd_transaksi'] ?></td>
+                                                <td><?= $dts['nama_user'] ?></td>
+                                                <td><?= $dts['jumlah_beli'] ?></td>
+                                                <td><?= $dts['total_harga'] ?></td>
+                                                <td><?= date_ind($dts['tanggal_beli']) ?></td>
+                                                <td><?php if ($dts['status'] == "Unapproved") : ?>
+                                                        <span class="badge badge-danger">Unapproved</span>
+                                                    <?php elseif ($dts['status'] == "Approved") : ?>
+                                                        <span class="badge badge-success">Approved</span>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="?page=surat-jalan&id=<?= $dts['kd_transaksi'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
 
-                                                    </td>
-                                                </tr>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    <?php else : ?>
-                                        <tr class="text-center">
-                                            <td colspan="5">Tidak Ada Data</td>
-                                        </tr>
-                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
