@@ -75,7 +75,7 @@ if ($_SESSION['level'] != "Checker" && $_SESSION['level'] != "Admin" && $_SESSIO
 								<tr>
 									<td>Tanggal Masuk</td>
 									<td>:</td>
-									<td><?php echo $detail['tanggal_masuk']; ?></td>
+									<td><?= date_ind($detail['tanggal_masuk']); ?></td>
 								</tr>
 								<tr>
 									<td>Harga</td>

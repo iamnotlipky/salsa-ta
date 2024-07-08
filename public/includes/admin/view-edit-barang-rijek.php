@@ -8,7 +8,7 @@ $data     = $br->selectWhere($table, "kd_barang", $_GET['id']);
 $getLayout = $br->select("table_layout");
 $getSatuan = $br->select("table_satuan");
 $getDistr = $br->select("table_supplier");
-$waktu    = date("Y-m-d");
+
 if (isset($_POST['edit-barang-rijek'])) {
 	$kode_barang  = $br->validateHtml($_POST['kode_barang']);
 	$nama_barang  = $br->validateHtml($_POST['nama_barang']);
@@ -19,6 +19,7 @@ if (isset($_POST['edit-barang-rijek'])) {
 	$stok         = $br->validateHtml($_POST['stok']);
 	$ket          = $_POST['ket'];
 	$status       = $_POST['status'];
+	$tanggal_masuk       = $_POST['tanggal_masuk'];
 
 	if ($kode_barang == " " || $nama_barang == " " || $layout_barang == " " || $satuan == " " || $supplier == " " || $harga == " " || $stok == " " || $ket == " " | $status == " ") {
 		$response = ['response' => 'negative', 'alert' => 'Lengkapi Formulir!'];
@@ -27,12 +28,12 @@ if (isset($_POST['edit-barang-rijek'])) {
 			$response = ['response' => 'negative', 'alert' => 'Harga atau Stok Tidak Boleh Kurang dari Nol!'];
 		} else {
 			if ($_FILES['foto']['name'] == "") {
-				$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_layout='$layout_barang',kd_satuan='$satuan',kd_supplier='$supplier',tanggal_masuk='$waktu',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',status='$status'";
+				$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_layout='$layout_barang',kd_satuan='$satuan',kd_supplier='$supplier',tanggal_masuk='$tanggal_masuk',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',status='$status'";
 				$response = $br->update($table, $value, "kd_barang", $_GET['id'], "?page=data-barang-rijek");
 			} else {
 				$response = $br->validateImage();
 				if ($response['types'] == "true") {
-					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_layout='$layout_barang',kd_satuan='$satuan',kd_supplier='$supplier',tanggal_masuk='$waktu',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',status='$status',gambar='$response[image]'";
+					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_layout='$layout_barang',kd_satuan='$satuan',kd_supplier='$supplier',tanggal_masuk='$tanggal_masuk',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',status='$status',gambar='$response[image]'";
 					$response = $br->update($table, $value, "kd_barang", $_GET['id'], "?page=data-barang-rijek");
 				} else {
 					$response = ['response' => 'negative', 'alert' => 'gambar error'];
@@ -144,6 +145,9 @@ if (isset($_POST['edit-barang-rijek'])) {
 											<div class="form-group">
 												<label for="">Keterangan</label>
 												<input type="text" class="form-control" name="ket" value="<?php echo $data['keterangan'] ?>">
+											</div>
+											<div class="form-group">
+												<input type="text" class="form-control" name="tanggal_masuk" value="<?php echo $data['tanggal_masuk'] ?>" readonly hidden>
 											</div>
 											<div class="form-group">
 												<label for="">Status</label>

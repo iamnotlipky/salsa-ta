@@ -58,18 +58,18 @@
  						<td><?= $ds['nama_barang'] ?></td>
  						<td><?= $ds['layout'] ?></td>
  						<td><?= $ds['nama_supplier'] ?></td>
- 						<td><?= $ds['tanggal_masuk'] ?></td>
+ 						<td><?= date_ind($ds['tanggal_masuk']) ?></td>
  						<td><?= $ds['harga_barang'] ?></td>
  						<td><?= $ds['stok_barang'] ?></td>
  					<?php $no++;
 					} ?>
  			</tbody>
  		</table>
-		<div class="float-right text-center mt-3">
-          <p>Tegal, <?php echo date("Y-m-d"); ?></p>
-          <div class="mt-3">
-            <p class="mb-5">Penanggung Jawab</p>
-            <p>( <?= $auth['nama_user'] ?> )</p>
-            </div>
-        </div>
+ 		<div class="float-right text-center mt-3">
+ 			<p>Tegal, <?php echo date("Y-m-d"); ?></p>
+ 			<div class="mt-3">
+ 				<p class="mb-5">Penanggung Jawab</p>
+ 				<p>( <?= $auth['nama_user'] ?> )</p>
+ 			</div>
+ 		</div>
  	</div>

@@ -1,10 +1,8 @@
 <?php
-require_once "../config/config.php";
-require_once "../functions/functions.php";
 $qb = new lsp();
-$dataB = $qb->select("detailbarangrijek");
-$totbal = $qb->selectSum("detailbarangrijek", "stok_barang");
-$total  = $qb->selectCount("detailbarangrijek", "kd_barang");
+$dataB = $qb->select("detailbarangrijek order by kd_barang desc");
+$totbal = $qb->selectSumWhere("detailbarangrijek", "stok_barang", "status='Approved'");
+$total  = $qb->selectCountWhere("detailbarangrijek", "kd_barang", "status='Approved'");
 ?>
 
 <style>
@@ -82,21 +80,20 @@ $total  = $qb->selectCount("detailbarangrijek", "kd_barang");
                 </tr>
               </thead>
               <tbody>
-                <?php
-                $no = 1;
-                foreach ($dataB as $ds) { ?>
-                  <tr>
-                    <td><?= $ds['kd_barang'] ?></td>
-                    <td><?= $ds['nama_barang'] ?></td>
-                    <td><?= $ds['layout'] ?></td>
-                    <td><?= $ds['nama_supplier'] ?></td>
-                    <td><?= $ds['tanggal_masuk'] ?></td>
-                    <td><?= number_format($ds['harga_barang']) ?></td>
-                    <td><?= $ds['stok_barang'] ?></td>
-                    <td><?= $ds['satuan'] ?></td>
-                  </tr>
-                <?php $no++;
-                } ?>
+                <?php foreach ($dataB as $ds) : ?>
+                  <?php if ($ds['status'] == "Approved") : ?>
+                    <tr>
+                      <td><?= $ds['kd_barang'] ?></td>
+                      <td><?= $ds['nama_barang'] ?></td>
+                      <td><?= $ds['layout'] ?></td>
+                      <td><?= $ds['nama_supplier'] ?></td>
+                      <td><?= date_ind($ds['tanggal_masuk']) ?></td>
+                      <td><?= number_format($ds['harga_barang']) ?></td>
+                      <td><?= $ds['stok_barang'] ?></td>
+                      <td><?= $ds['satuan'] ?></td>
+                    </tr>
+                  <?php endif; ?>
+                <?php endforeach; ?>
               </tbody>
               <tr>
                 <td colspan="7">Total barang yang di miliki</td>
@@ -108,10 +105,10 @@ $total  = $qb->selectCount("detailbarangrijek", "kd_barang");
               </tr>
             </table>
             <div class="float-right text-center mt-3">
-              <p>Tegal, <?php echo date("Y-m-d"); ?></p>
-              <div class="mt-3">
+              <p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>
+              <div class="mt-2">
                 <p class="pb-5">Penanggung Jawab</p>
-                <p class="pt-5">( <?= $auth['nama_user'] ?> )</p>
+                <p class="pt-3">( <?= $auth['nama_user'] ?> )</p>
               </div>
             </div>
           </div>

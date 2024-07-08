@@ -6,6 +6,7 @@ if (isset($_POST['btnSearch'])) {
 	$param      = $_POST['dateAwal'];
 	$param1     = $_POST['dateAkhir'];
 	$dataB      = $qb->selectBetween("detailbarang", $whereparam, $param, $param1);
+	$dataC      = $qb->selectBetween("detailbarangrijek", $whereparam, $param, $param1);
 }
 ?>
 
@@ -78,33 +79,56 @@ if (isset($_POST['btnSearch'])) {
 									<tbody>
 										<?php
 										if (!empty($dataB)) {
-											foreach (@$dataB['data'] as $ds) { ?>
-												<tr>
-													<td><?= $ds['kd_barang'] ?></td>
-													<td><?= $ds['nama_barang'] ?></td>
-													<td><?= $ds['layout'] ?></td>
-													<td><?= $ds['satuan'] ?></td>
-													<td><?= $ds['nama_supplier'] ?></td>
-													<td><?= $ds['tanggal_masuk'] ?></td>
-													<td><?= number_format($ds['harga_barang']) ?></td>
-													<td><?= $ds['stok_barang'] ?></td>
-												</tr>
-											<?php } ?>
+											foreach (@$dataB['data'] as $ds) {
+												if ($ds['status'] == "Approved") { ?>
+													<tr>
+														<td><?= $ds['kd_barang'] ?></td>
+														<td><?= $ds['nama_barang'] ?></td>
+														<td><?= $ds['layout'] ?></td>
+														<td><?= $ds['satuan'] ?></td>
+														<td><?= $ds['nama_supplier'] ?></td>
+														<td><?= date_ind($ds['tanggal_masuk']) ?></td>
+														<td><?= number_format($ds['harga_barang']) ?></td>
+														<td><?= $ds['stok_barang'] ?></td>
+													</tr>
+											<?php }
+											} ?>
 										<?php } else { ?>
 											<tr>
-												<td colspan="7" class="text-center">Tidak Ada Data</td>
+												<td colspan="8" class="text-center">Tidak Ada Data</td>
+											</tr>
+										<?php } ?>
+										<?php
+										if (!empty($dataC)) {
+											foreach (@$dataC['data'] as $dsr) {
+												if ($dsr['status'] == "Approved") { ?>
+													<tr>
+														<td><?= $dsr['kd_barang'] ?></td>
+														<td><?= $dsr['nama_barang'] ?></td>
+														<td><?= $dsr['layout'] ?></td>
+														<td><?= $dsr['satuan'] ?></td>
+														<td><?= $dsr['nama_supplier'] ?></td>
+														<td><?= date_ind($dsr['tanggal_masuk']) ?></td>
+														<td><?= number_format($dsr['harga_barang']) ?></td>
+														<td><?= $dsr['stok_barang'] ?></td>
+													</tr>
+											<?php }
+											} ?>
+										<?php } else { ?>
+											<tr>
+												<td colspan="8" class="text-center">Tidak Ada Data</td>
 											</tr>
 										<?php } ?>
 									</tbody>
 								</table>
-								<div class="float-right text-center mt-3 pb-3">
-									<p>Tegal, <?php echo date("Y-m-d"); ?></p>
-									<div class="mt-3">
-										<p class="mb-5">Penanggung Jawab</p>
-										<p>( <?= $auth['nama_user'] ?> )</p>
-										</div>
+								<div class="float-right text-center mt-3">
+									<p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>
+									<div class="mt-2">
+										<p class="pb-5">Penanggung Jawab</p>
+										<p class="py-3">( <?= $auth['nama_user'] ?> )</p>
 									</div>
 								</div>
+							</div>
 						</form>
 					</div>
 				</div>

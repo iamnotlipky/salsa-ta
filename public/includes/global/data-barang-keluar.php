@@ -1,7 +1,7 @@
 <?php
 
 $trs = new lsp();
-$dataTransaksi = $trs->select("transaksi_terbaru");
+$dataTransaksi = $trs->select("transaksi_terbaru order by kd_transaksi desc");
 if (isset($_GET['id'])) {
       $id = $_GET['id'];
       $dataDetail = $trs->edit("detailTransaksi", "kd_transaksi", $id);
@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
                                     <div class="card-body">
                                           <form method="post">
                                                 <div class="form-group">
-                                                      <a class="btn btn-dark btn-block" href="#myModal" data-toggle="modal">Pilih Barang</a>
+                                                      <a class="btn btn-primary btn-block" href="#myModal" data-toggle="modal">Pilih Barang</a>
                                                 </div>
                                                 <?php if (isset($_GET['id'])) : ?>
                                                       <a href="?page=data-barang-keluar" class="btn btn-danger btn-block"><i class="fa fa-repeat"></i> Muat Ulang</a>
@@ -101,7 +101,7 @@ if (isset($_GET['id'])) {
                                           <h3>PT Semen Indonesia Distributor</h3>
                                           <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
                                           <h4>Laporan Barang Keluar</h4>
-                                          <a href="#" class="btn btn-dark mt-3" onclick="window.print();">Cetak</a>
+                                          <a href="#" class="btn btn-primary mt-3" onclick="window.print();">Cetak</a>
                                     </div>
                                     <div class="col-6 text-right">
                                           <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
@@ -110,9 +110,6 @@ if (isset($_GET['id'])) {
                               <hr>
                               <div class="row">
                                     <div class="col-sm-6">Kode Barang Keluar : <?php echo $id ?></div>
-                                    <div class="col-sm-6">
-                                          <p class="text-right"><span><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
-                                    </div>
                               </div>
                               <br>
                               <table class="table table-striped table-bordered" width="80%">
@@ -131,7 +128,7 @@ if (isset($_GET['id'])) {
                                                 <td><?= $dd['harga_barang'] ?></td>
                                                 <td><?= $dd['jumlah'] ?></td>
                                                 <td><?= "Rp." . number_format($dd['sub_total']) . ",-" ?></td>
-                                                <td><?php echo $dd['tanggal_beli']; ?></td>
+                                                <td><?= date_ind($dd['tanggal_beli']); ?></td>
                                           </tr>
                                     <?php endforeach; ?>
                                     <tr>
@@ -149,7 +146,7 @@ if (isset($_GET['id'])) {
                               </table>
                               <br>
                               <div class="float-right text-center mt-3">
-                                    <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                                    <p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>
                                     <div class="mt-3">
                                           <p class="mb-5">Penanggung Jawab</p>
                                           <p>( <?= $auth['nama_user'] ?> )</p>
@@ -162,7 +159,7 @@ if (isset($_GET['id'])) {
                                                 <h3>PT Semen Indonesia Distributor</h3>
                                                 <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
                                                 <h4>Laporan Barang Keluar</h4>
-                                                <a href="#" class="btn btn-dark mt-3" onclick="window.print();">Cetak</a>
+                                                <a href="#" class="btn btn-primary mt-3" onclick="window.print();">Cetak</a>
                                           </div>
                                           <div class="col-6 text-right">
                                                 <img src="assets/img/icon/logo.png" alt="logo" class="w-75 text-right">
@@ -181,16 +178,18 @@ if (isset($_GET['id'])) {
                                           </thead>
                                           <tbody>
                                                 <?php foreach ($dataTransaksi as $dts) : ?>
-                                                      <tr>
-                                                            <td><?= $dts['kd_transaksi'] ?></td>
-                                                            <td><?= $dts['nama_user'] ?></td>
-                                                            <td><?= $dts['jumlah_beli'] ?></td>
-                                                            <td><?= "Rp." . number_format($dts['total_harga']) . ",-" ?></td>
-                                                            <td><?= $dts['tanggal_beli'] ?></td>
-                                                      </tr>
+                                                      <?php if ($dts['status'] == "Approved") : ?>
+                                                            <tr>
+                                                                  <td><?= $dts['kd_transaksi'] ?></td>
+                                                                  <td><?= $dts['nama_user'] ?></td>
+                                                                  <td><?= $dts['jumlah_beli'] ?></td>
+                                                                  <td><?= "Rp." . number_format($dts['total_harga']) . ",-" ?></td>
+                                                                  <td><?= date_ind($dts['tanggal_beli']) ?></td>
+                                                            </tr>
+                                                      <?php endif; ?>
                                                 <?php endforeach; ?>
                                                 <?php
-                                                $grand = $trs->selectSum("transaksi", "sub_total");
+                                                $grand = $trs->selectSumWhere("transaksi", "sub_total", "status='Approved'");
                                                 ?>
                                                 <tr>
                                                       <td colspan="2"></td>
@@ -201,7 +200,7 @@ if (isset($_GET['id'])) {
                                           </tbody>
                                     </table>
                                     <div class="float-right text-center mt-3">
-                                          <p>Tegal, <?php echo date("Y-m-d"); ?></p>
+                                          <p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>
                                           <div class="mt-3">
                                                 <p class="mb-5">Penanggung Jawab</p>
                                                 <p>( <?= $auth['nama_user'] ?> )</p>
@@ -238,23 +237,25 @@ if (isset($_GET['id'])) {
                               <tbody>
                                     <?php if (!empty($dataTransaksi)) : ?>
                                           <?php foreach ($dataTransaksi as $dts) : ?>
-                                                <tr>
-                                                      <td><a href="?page=data-barang-keluar&id=<?= $dts['kd_transaksi']; ?>"><?= $dts['kd_transaksi'] ?></a></td>
-                                                      <td><?= $dts['nama_user'] ?></td>
-                                                      <td><?= $dts['jumlah_beli'] ?></td>
-                                                      <td><?= $dts['total_harga'] ?></td>
-                                                      <td><?= $dts['tanggal_beli'] ?></td>
-                                                      <td><?php if ($dts['status'] == "Unapproved") : ?>
-                                                                  <span class="badge badge-danger">Unapproved</span>
-                                                            <?php elseif ($dts['status'] == "Approved") : ?>
-                                                                  <span class="badge badge-success">Approved</span>
-                                                            <?php endif; ?>
-                                                      </td>
-                                                      <td class="text-center">
-                                                            <a href="?page=surat-jalan&id=<?= $dts['kd_transaksi'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
+                                                <?php if ($dts['status'] == "Approved") : ?>
+                                                      <tr>
+                                                            <td><a href="?page=data-barang-keluar&id=<?= $dts['kd_transaksi']; ?>"><?= $dts['kd_transaksi'] ?></a></td>
+                                                            <td><?= $dts['nama_user'] ?></td>
+                                                            <td><?= $dts['jumlah_beli'] ?></td>
+                                                            <td><?= $dts['total_harga'] ?></td>
+                                                            <td><?= date_ind($dts['tanggal_beli']) ?></td>
+                                                            <td><?php if ($dts['status'] == "Unapproved") : ?>
+                                                                        <span class="badge badge-danger">Unapproved</span>
+                                                                  <?php elseif ($dts['status'] == "Approved") : ?>
+                                                                        <span class="badge badge-success">Approved</span>
+                                                                  <?php endif; ?>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                  <a href="?page=surat-jalan&id=<?= $dts['kd_transaksi'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning text-white"><i class="fa fa-search"></i></a>
 
-                                                      </td>
-                                                </tr>
+                                                            </td>
+                                                      </tr>
+                                                <?php endif; ?>
                                           <?php endforeach ?>
                                     <?php else : ?>
                                           <tr class="text-center">

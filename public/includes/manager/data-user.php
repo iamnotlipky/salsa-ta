@@ -96,7 +96,6 @@ if (isset($_GET['delete'])) {
                                     <select name="level" class="form-control mb-1">
                                         <option value="">Pilih Level</option>
                                         <option value="Admin">Admin</option>
-                                        <option value="Manager">Manager</option>
                                         <option value="Checker">Checker</option>
                                     </select>
                                 </div>

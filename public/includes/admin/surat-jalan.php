@@ -138,7 +138,7 @@ if (isset($_POST['btn-approve'])) {
 								</tr> -->
 								</table>
 							</div>
-							<p class="text-right my-3">Tanggal SPJ : <?php echo $dd['tanggal_beli']; ?></p>
+							<p class="text-right my-3">Tegal, <?= date_ind($dd['tanggal_beli']); ?></p>
 							<div class="table-responsive">
 								<table width="100%" class="text-center">
 									<tr>

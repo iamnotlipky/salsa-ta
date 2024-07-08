@@ -2,11 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard Admin</title>
+    <title>Warehouse PT SID Cabang Tegal</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../assets/css/mains.css">
+
+    <!-- Website Icon -->
+    <link href="../../assets/img/icon/icon.png" rel="icon">
+    <link href="../../assets/img/icon/icon.png" rel="apple-touch-icon">
 </head>
 
 <style>
@@ -26,6 +30,7 @@
     require_once "../../../config/config.php";
     require_once "../../../functions/functions.php";
     require_once "../../../functions/sessions.php";
+    require_once "../../../functions/date.php";
 
     $qb = new lsp();
     if (!isset($_GET['dateAwal']) || !isset($_GET['dateAkhir'])) {
@@ -44,7 +49,7 @@
                     <h3>PT Semen Indonesia Distributor</h3>
                     <p>Jl. Raya Tegal - Pemalang KM 1 Kedondong Padaharja, Kec. Kramat Kab. Tegal Jawa Tengah</p>
                     <h4>Laporan Barang Periode</h4>
-                    <p>Dari tanggal : <?php echo $_GET['dateAwal']; ?> sampai <?php echo $_GET['dateAkhir'] ?></p>
+                    <p>Dari tanggal : <?= date_ind($_GET['dateAwal']); ?> sampai <?= date_ind($_GET['dateAkhir']); ?></p>
                 </div>
                 <div class="col-6 text-right">
                     <img src="../../assets/img/icon/logo.png" alt="logo" class="w-50 text-right">
@@ -74,7 +79,7 @@
                                     <td><?= $ds['nama_barang'] ?></td>
                                     <td><?= $ds['layout'] ?></td>
                                     <td><?= $ds['nama_supplier'] ?></td>
-                                    <td><?= $ds['tanggal_masuk'] ?></td>
+                                    <td><?= date_ind($ds['tanggal_masuk']) ?></td>
                                     <td><?= number_format($ds['harga_barang']) ?></td>
                                     <td><?= $ds['stok_barang'] ?></td>
                                 </tr>
@@ -97,10 +102,10 @@
                 </table>
             </div>
             <div class="float-right text-center mt-3">
-                <p>Tegal, <?php echo date("Y-m-d"); ?></p>
-                <div class="mt-3">
-                    <p class="mb-5">Penanggung Jawab</p>
-                    <p>( <?= $auth['nama_user'] ?> )</p>
+                <p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>
+                <div class="mt-2">
+                    <p class="pb-5">Penanggung Jawab</p>
+                    <p class="pt-3">( <?= $auth['nama_user'] ?> )</p>
                 </div>
             </div>
         </div>

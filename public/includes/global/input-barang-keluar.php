@@ -232,7 +232,7 @@ if (isset($_GET['delete'])) {
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <table id="myDataTables" class="table table-responsive table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <td>Kode Barang</td>
@@ -243,14 +243,16 @@ if (isset($_GET['delete'])) {
                     </thead>
                     <tbody>
                         <?php if (!empty($barangs)) : ?>
-                            <?php foreach ($barangs as $brs) { ?>
-                                <tr>
-                                    <td><a href="admin-panel.php?page=input-barang-keluar&get-barang&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
-                                    <td><?php echo $brs['nama_barang'] ?></td>
-                                    <td><?php echo $brs['harga_barang'] ?></td>
-                                    <td><?php echo $brs['stok_barang'] ?></td>
-                                </tr>
-                            <?php } ?>
+                            <?php foreach ($barangs as $brs) {
+                                if ($brs['status'] == "Approved") { ?>
+                                    <tr>
+                                        <td><a href="admin-panel.php?page=input-barang-keluar&get-barang&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
+                                        <td><?php echo $brs['nama_barang'] ?></td>
+                                        <td><?php echo $brs['harga_barang'] ?></td>
+                                        <td><?php echo $brs['stok_barang'] ?></td>
+                                    </tr>
+                            <?php }
+                            } ?>
                         <?php else : ?>
                             <tr class="text-center">
                                 <td colspan="4">Tidak Ada Barang Tersedia</td>

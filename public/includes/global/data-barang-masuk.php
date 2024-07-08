@@ -85,7 +85,7 @@ if (isset($_GET['delete'])) {
                                             <td><?= $db['nama_barang'] ?></td>
                                             <td><?= $db['layout'] ?></td>
                                             <td><?= $db['nama_supplier'] ?></td>
-                                            <td><?= $db['tanggal_masuk'] ?></td>
+                                            <td><?= date_ind($db['tanggal_masuk']) ?></td>
                                             <td><?= number_format($db['harga_barang']) ?></td>
                                             <td><?= $db['stok_barang'] ?></td>
                                             <td><?= $db['satuan'] ?></td>

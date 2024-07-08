@@ -75,7 +75,7 @@ if (isset($_GET['delete'])) {
                                                 <td><?= $dts['nama_user'] ?></td>
                                                 <td><?= $dts['jumlah_beli'] ?></td>
                                                 <td><?= $dts['total_harga'] ?></td>
-                                                <td><?= $dts['tanggal_beli'] ?></td>
+                                                <td><?= date_ind($dts['tanggal_beli']) ?></td>
                                                 <td><?php if ($dts['status'] == "Unapproved") : ?>
                                                         <span class="badge badge-danger">Unapproved</span>
                                                     <?php elseif ($dts['status'] == "Approved") : ?>

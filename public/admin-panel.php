@@ -3,6 +3,7 @@
 require_once "../config/config.php";
 require_once "../functions/functions.php";
 require_once "../functions/sessions.php";
+require_once "../functions/date.php";
 
 include "templates/header.php";
 

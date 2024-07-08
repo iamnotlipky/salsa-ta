@@ -58,8 +58,7 @@ if (isset($_GET['export'])) {
 						</div>
 					</div>
 					<!-- <button class="btn btn-primary"><a href="pages/manager/BarangHabisPrint.php" style="color: white;">Export Excel</a></button> -->
-					<button class="btn btn-dark mt-3" onclick="window.print()">Cetak</button>
-					<p class="text-right my-3">Tanggal Cetak : <?= date("Y-m-d"); ?></p>
+					<button class="btn btn-dark my-3" onclick="window.print()">Cetak</button>
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered" style="width:100%">
 							<thead>
@@ -83,7 +82,7 @@ if (isset($_GET['export'])) {
 											<td><?= $ds['nama_barang'] ?></td>
 											<td><?= $ds['layout'] ?></td>
 											<td><?= $ds['nama_supplier'] ?></td>
-											<td><?= $ds['tanggal_masuk'] ?></td>
+											<td><?= date_ind($ds['tanggal_masuk']) ?></td>
 											<td><?= number_format($ds['harga_barang']) ?></td>
 											<td><?= $ds['stok_barang'] ?></td>
 										</tr>
@@ -97,10 +96,10 @@ if (isset($_GET['export'])) {
 							</t>
 						</table>
 						<div class="float-right text-center mt-3">
-							<p>Tegal, <?php echo date("Y-m-d"); ?></p>
-							<div class="mt-3">
-								<p class="mb-5">Penanggung Jawab</p>
-								<p>( <?= $auth['nama_user'] ?> )</p>
+							<p>Tegal, <?= date_ind(date("Y-m-d")); ?></p>
+							<div class="mt-2">
+								<p class="pb-5">Penanggung Jawab</p>
+								<p class="pt-3">( <?= $auth['nama_user'] ?> )</p>
 							</div>
 						</div>
 					</div>
