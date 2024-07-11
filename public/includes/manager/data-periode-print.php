@@ -90,7 +90,7 @@
                             } ?>
                             <tr>
                                 <td colspan="5"></td>
-                                <td>Jumlah</td>
+                                <td>Jumlah Barang Masuk</td>
                                 <td>
                                     <?php foreach ($dataB['jumlah'] as $datas) : ?>
                                         <?php echo $datas; ?>
@@ -120,7 +120,7 @@
                             } ?>
                             <tr>
                                 <td colspan="5"></td>
-                                <td>Jumlah</td>
+                                <td>Jumlah Barang Rijek</td>
                                 <td>
                                     <?php foreach ($dataC['jumlah'] as $datasr) : ?>
                                         <?php echo $datasr; ?>

@@ -95,7 +95,7 @@ if (isset($_POST['btnSearch'])) {
 											} ?>
 										<?php } else { ?>
 											<tr>
-												<td colspan="8" class="text-center">Tidak Ada Data</td>
+												<td colspan="8" class="text-center">Tidak Ada Data Barang Masuk</td>
 											</tr>
 										<?php } ?>
 										<?php
@@ -116,7 +116,7 @@ if (isset($_POST['btnSearch'])) {
 											} ?>
 										<?php } else { ?>
 											<tr>
-												<td colspan="8" class="text-center">Tidak Ada Data</td>
+												<td colspan="8" class="text-center">Tidak Ada Data Barang Rijek</td>
 											</tr>
 										<?php } ?>
 									</tbody>
