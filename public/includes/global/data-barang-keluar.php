@@ -4,7 +4,7 @@ $trs = new lsp();
 $dataTransaksi = $trs->select("transaksi_terbaru order by kd_transaksi desc");
 if (isset($_GET['id'])) {
       $id = $_GET['id'];
-      $dataDetail = $trs->edit("detailTransaksi", "kd_transaksi", $id);
+      $dataDetail = $trs->edit("detailtransaksi", "kd_transaksi", $id);
       $total  = $trs->selectSumWhere("transaksi", "sub_total", "kd_transaksi='$id'");
       $jumlah_barang = $trs->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$id'");
 }

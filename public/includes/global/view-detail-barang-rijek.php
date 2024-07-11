@@ -5,7 +5,7 @@ $detail = $dt->selectWhere("detailbarangrijek", "kd_barang", $_GET['id']);
 if ($_SESSION['level'] != "Checker" && $_SESSION['level'] != "Admin" && $_SESSION['level'] != "Manager") {
 	header("location:index.php");
 }
-
+ 
 ?>
 
 <section class="au-breadcrumb m-t-75">

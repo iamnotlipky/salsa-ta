@@ -4,7 +4,7 @@ $spj  = new lsp();
 $id = $_GET['id'];
 $data   = $spj->edit("transaksi", "kd_transaksi", $id);
 $total  = $spj->selectSumWhere("transaksi", "sub_total", "kd_transaksi='$id'");
-$dataDetail = $spj->edit("detailTransaksi", "kd_transaksi", $id);
+$dataDetail = $spj->edit("detailtransaksi", "kd_transaksi", $id);
 $jumlah_barang = $spj->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$id'");
 $detailTrans = $spj->selectWhere("table_transaksi", "kd_transaksi", $id);
 $manager = $spj->select("table_user");

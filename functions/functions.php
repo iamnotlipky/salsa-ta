@@ -65,7 +65,8 @@ class lsp
         $sql = "SELECT * FROM $table WHERE $whereparam BETWEEN '$param' AND '$param1'";
         $query = mysqli_query($con, $sql);
 
-        $sqls = "SELECT SUM(stok_barang) as count FROM $table WHERE $whereparam BETWEEN '$param' AND '$param1'";
+        $status = "status='Approved'";
+        $sqls = "SELECT SUM(stok_barang) as count FROM $table WHERE $status AND $whereparam  BETWEEN '$param' AND '$param1'";
         $querys = mysqli_query($con, $sqls);
         $assocs = mysqli_fetch_assoc($querys);
         $data = [];

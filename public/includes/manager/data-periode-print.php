@@ -40,6 +40,7 @@
     $param      = $_GET['dateAwal'];
     $param1     = $_GET['dateAkhir'];
     $dataB      = $qb->selectBetween("detailbarang", $whereparam, $param, $param1);
+    $dataC      = $qb->selectBetween("detailbarangrijek", $whereparam, $param, $param1);
     ?>
 
     <div class="row">
@@ -73,17 +74,19 @@
                         <?php
                         if (count(@$dataB) > 0) {
                             $no = 1;
-                            foreach (@$dataB['data'] as $ds) { ?>
-                                <tr>
-                                    <td><?= $ds['kd_barang'] ?></td>
-                                    <td><?= $ds['nama_barang'] ?></td>
-                                    <td><?= $ds['layout'] ?></td>
-                                    <td><?= $ds['nama_supplier'] ?></td>
-                                    <td><?= date_ind($ds['tanggal_masuk']) ?></td>
-                                    <td><?= number_format($ds['harga_barang']) ?></td>
-                                    <td><?= $ds['stok_barang'] ?></td>
-                                </tr>
+                            foreach (@$dataB['data'] as $ds) {
+                                if ($ds['status'] == "Approved") { ?>
+                                    <tr>
+                                        <td><?= $ds['kd_barang'] ?></td>
+                                        <td><?= $ds['nama_barang'] ?></td>
+                                        <td><?= $ds['layout'] ?></td>
+                                        <td><?= $ds['nama_supplier'] ?></td>
+                                        <td><?= date_ind($ds['tanggal_masuk']) ?></td>
+                                        <td><?= number_format($ds['harga_barang']) ?></td>
+                                        <td><?= $ds['stok_barang'] ?></td>
+                                    </tr>
                             <?php $no++;
+                                }
                             } ?>
                             <tr>
                                 <td colspan="5"></td>
@@ -91,6 +94,36 @@
                                 <td>
                                     <?php foreach ($dataB['jumlah'] as $datas) : ?>
                                         <?php echo $datas; ?>
+                                    <?php endforeach ?>
+                            </tr>
+                        <?php } else { ?>
+                            <tr>
+                                <td colspan="7" class="text-center">Tidak Ada Barang pada Periode Ini</td>
+                            </tr>
+                        <?php } ?>
+                        <?php
+                        if (count(@$dataC) > 0) {
+                            $no = 1;
+                            foreach (@$dataC['data'] as $dsr) {
+                                if ($dsr['status'] == "Approved") { ?>
+                                    <tr>
+                                        <td><?= $dsr['kd_barang'] ?></td>
+                                        <td><?= $dsr['nama_barang'] ?></td>
+                                        <td><?= $dsr['layout'] ?></td>
+                                        <td><?= $dsr['nama_supplier'] ?></td>
+                                        <td><?= date_ind($dsr['tanggal_masuk']) ?></td>
+                                        <td><?= number_format($dsr['harga_barang']) ?></td>
+                                        <td><?= $dsr['stok_barang'] ?></td>
+                                    </tr>
+                            <?php $no++;
+                                }
+                            } ?>
+                            <tr>
+                                <td colspan="5"></td>
+                                <td>Jumlah</td>
+                                <td>
+                                    <?php foreach ($dataC['jumlah'] as $datasr) : ?>
+                                        <?php echo $datasr; ?>
                                     <?php endforeach ?>
                             </tr>
                         <?php } else { ?>

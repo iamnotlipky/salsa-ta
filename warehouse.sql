@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2024 at 09:34 PM
+-- Generation Time: Jul 11, 2024 at 03:06 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `inventori`
+-- Database: `warehouse`
 --
 
 -- --------------------------------------------------------
