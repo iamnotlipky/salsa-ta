@@ -56,11 +56,11 @@ if (isset($_POST['btnSearch'])) {
 									</div>
 								</div>
 								<br>
-								<button class="btn btn-dark" name="btnSearch"><i class="fa fa-search"></i> Cari</button>
+								<button class="btn btn-primary" name="btnSearch"><i class="fa fa-search"></i> Cari</button>
 								<a href="?page=data-barang-periode" class="btn btn-danger">Muat Ulang</a>
 								<br><br>
 								<?php if (isset($_POST['dateAwal'])) : ?>
-									<a target="_blank" href="includes/manager/data-periode-print.php?dateAwal=<?php echo $param ?>&dateAkhir=<?php echo $param1 ?>" class="btn btn-dark"><i class="fa fa-print"></i> Cetak</a>
+									<a target="_blank" href="includes/manager/data-periode-print.php?dateAwal=<?php echo $param ?>&dateAkhir=<?php echo $param1 ?>" class="btn btn-primary"><i class="fa fa-print"></i> Cetak</a>
 								<?php endif ?>
 								<br><br>
 								<table class="table table-striped table-hover table-bordered">

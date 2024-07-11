@@ -6,44 +6,6 @@
                     <span class="span-sid">PT SID Cab. Tegal</span>
                 </div>
                 <div class="header-button2">
-                    <!-- <div class="header-button-item has-noti js-item-menu">
-                        <i class="zmdi zmdi-notifications"></i>
-                        <div class="notifi-dropdown js-dropdown">
-                            <div class="notifi__title">
-                                <p>You have 3 Notifications</p>
-                            </div>
-                            <div class="notifi__item">
-                                <div class="bg-c1 img-cir img-40">
-                                    <i class="zmdi zmdi-email-open"></i>
-                                </div>
-                                <div class="content">
-                                    <p>You got a email notification</p>
-                                    <span class="date">April 12, 2018 06:50</span>
-                                </div>
-                            </div>
-                            <div class="notifi__item">
-                                <div class="bg-c2 img-cir img-40">
-                                    <i class="zmdi zmdi-account-box"></i>
-                                </div>
-                                <div class="content">
-                                    <p>Your account has been blocked</p>
-                                    <span class="date">April 12, 2018 06:50</span>
-                                </div>
-                            </div>
-                            <div class="notifi__item">
-                                <div class="bg-c3 img-cir img-40">
-                                    <i class="zmdi zmdi-file-text"></i>
-                                </div>
-                                <div class="content">
-                                    <p>You got a new file</p>
-                                    <span class="date">April 12, 2018 06:50</span>
-                                </div>
-                            </div>
-                            <div class="notifi__footer">
-                                <a href="#">All notifications</a>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="header-button-item mr-0 js-sidebar-btn">
                         <i class="zmdi zmdi-menu"></i>
                     </div>
@@ -88,7 +50,7 @@
                     <li><a href="?page=data-satuan"><i class="fas fa-barcode"></i>Kelola Data Satuan</a></li>
                     <li><a href="?page=data-barang-masuk"><i class="fas fa-arrow-left"></i>Kelola Barang Masuk</a></li>
                     <li><a href="?page=data-barang-rijek"><i class="fas fa-trash"></i>Kelola Barang Rijek</a></li>
-                    <li><a href="?page=data-barang-keluar"><i class="fas fa-arrow-right"></i>Kelola Barang Keluar</a></li>i>
+                    <li><a href="?page=data-barang-keluar"><i class="fas fa-arrow-right"></i>Kelola Barang Keluar</a></li>
                 <?php elseif ($_SESSION['level'] == "Checker") : ?>
                     <li><a href="?page=data-barang-masuk"><i class="fas fa-arrow-left"></i>Data Barang Masuk</a></li>
                     <li><a href="?page=data-barang-rijek"><i class="fas fa-arrow-right"></i>Data Barang Rijek</a></li>

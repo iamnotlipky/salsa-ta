@@ -64,7 +64,6 @@ $total  = $qb->selectCountWhere("detailbarangrijek", "kd_barang", "status='Appro
           <div class="my-3">
             <button class="btn btn-primary" onclick="window.print()">Cetak</button>
           </div>
-          <p class="text-right mb-3">Tanggal Cetak: <?php echo date("Y-m-d"); ?></p>
           <div class="table-responsive">
             <table class="table table-striped table-bordered" border="1" cellspacing="0" width="100%;" cellpadding="20">
               <thead>

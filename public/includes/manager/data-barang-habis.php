@@ -58,7 +58,7 @@ if (isset($_GET['export'])) {
 						</div>
 					</div>
 					<!-- <button class="btn btn-primary"><a href="pages/manager/BarangHabisPrint.php" style="color: white;">Export Excel</a></button> -->
-					<button class="btn btn-dark my-3" onclick="window.print()">Cetak</button>
+					<button class="btn btn-primary my-3" onclick="window.print()">Cetak</button>
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered" style="width:100%">
 							<thead>
